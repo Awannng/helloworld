@@ -1,31 +1,22 @@
-import React from "react";
-import NavBar from "../components/NavBar";
-import TopBar from "../components/TopBar";
-import SearchBox from "../components/SearchBox";
-import PostBox from "../components/PostBox";
-import Posts from "../components/Posts";
+// src/pages/HomePage.jsx
 
-function HomePage() {
+// Import React library for creating the React component
+import React from 'react';
+
+// Import the custom MapComponent to be used on this page
+import MapComponent from '../components/MapComponent';
+
+const HomePage = () => {
   return (
-    <>
-      {/* Posts component might need props later. */}
-      <div className="grid grid-cols-5">
-        <div className="col-span-1">
-          <NavBar />
-        </div>
-        <div className="col-start-2 col-end-6 mr-auto ml-auto w-5/6">
-          <TopBar />
-          <div className="flex flex-col w-full">
-            <SearchBox />
-            <PostBox />
-          </div>
-          <Posts />
-          <Posts />
-          <Posts />
-        </div>
-      </div>
-    </>
+    // Set the container to relative positioning and make it fill the entire screen's height and width
+    <div className="relative h-screen w-screen">
+      {/* Display a heading at the top of the page */}
+      <h1 className="text-2xl font-bold mb-4">My Map Page</h1>
+      {/* Render the MapComponent to show the map */}
+      <MapComponent />
+    </div>
   );
-}
+};
 
+// Export the HomePage component to be used in other parts of the application
 export default HomePage;
