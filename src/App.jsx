@@ -1,30 +1,51 @@
-import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import TrendingPage from "./pages/TrendingPage";
-import ErrorPage from "./pages/ErrorPage";
+import { useState, useEffect } from 'react';
+// Importing necessary hooks and components from React and react-router-dom
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';  // Importing the LoginPage component
+import HomePage from './pages/HomePage';    // Importing the HomePage component
 
 function App() {
-  //might need loader later(need more research)
-  //This page is the router that connects to different pages. So far, I only added 2 pages. Make sure the path of the router matches to the Link 'to' attribute in the NavBar component.
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomePage />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "trending",
-      element: <TrendingPage />,
-      errorElement: <ErrorPage />,
-    },
-  ]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Declaring a state variable 'isAuthenticated' to track if the user is logged in
+  // 'setIsAuthenticated' is the function to update this state
+
+  const navigate = useNavigate();
+  // useNavigate hook returns a navigation function which allows for programmatic navigation
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+      // If the user is authenticated, navigate them to the homepage ('/')
+    }
+  }, [isAuthenticated, navigate]);
+  // useEffect hook that runs whenever 'isAuthenticated' or 'navigate' changes
+  // Ensures that if 'isAuthenticated' becomes true, the user is redirected to '/'
 
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <Routes>
+      {/* Define all routes within the Routes component */}
+      <Route
+        path="/"
+        element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
+        // If user is authenticated, render HomePage at the root path '/'
+        // Otherwise, redirect to '/login' using the Navigate component
+      />
+      <Route
+        path="/login"
+        element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
+        // Render LoginPage at '/login' path
+        // Pass 'setIsAuthenticated' to LoginPage so it can update the authentication state
+      />
+    </Routes>
   );
 }
 
-export default App;
+export default function RootApp() {
+  return (
+    <BrowserRouter>
+      <App />
+      {/* BrowserRouter provides routing context for the entire app */}
+    </BrowserRouter>
+  );
+}
+

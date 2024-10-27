@@ -1,11 +1,15 @@
+@import "leaflet/dist/leaflet.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "leaflet/dist/leaflet.css";
+
 
 /* This is the styling for the navBar ul list.*/
 .navbar--list {
-  @apply p-3 hover:bg-white hover:cursor-pointer hover:text-black flex justify-between;
+  @apply p-3 hover:bg-white
+   hover:cursor-pointer 
+   hover:text-black 
+   flex justify-between;
 }
 
 .textarea--postbox {
