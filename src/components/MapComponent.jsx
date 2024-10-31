@@ -4,7 +4,13 @@
 import React, { useState } from "react";
 
 // Import map-related components from 'react-leaflet'
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 
 // Import Leaflet's CSS to ensure map styles are applied correctly
 import "leaflet/dist/leaflet.css";
@@ -12,6 +18,7 @@ import CurrentPosition from "./CurrentPosition";
 
 const MapComponent = () => {
   //sets the max boundary that can be dragged on the map, since the map has repeated area, this makes the boundry of one world map.
+  //lat and long
   const bounds = [
     [-78.87, -173.961], // South West corner
     [83.29, 189.501], // North East corner
@@ -19,6 +26,7 @@ const MapComponent = () => {
 
   //prop of the CurrentPosition that tracks your current location
   const [currentPosition, setCurrentPosition] = useState(null);
+
   return (
     <>
       {/* Set the map container to absolute positioning and make it fill the

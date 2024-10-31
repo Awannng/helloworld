@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMapEvents, Marker, Popup } from "react-leaflet";
 
 const CurrentPosition = ({currentPosition, setCurrentPosition}) => {
  
-// this functions will return the location that you are currently at and add a marker, plus move the map to where the marker is
+// this functions will return the location that you are currently at and add a marker, plus move the map to where the marker is once agreed upon sharing location
   const map = useMapEvents({
+    //when click on anywhere of map, it will locate the lag and lng
     click() {
       map.locate();
     },
     locationfound(e) {
-        //set the position based on the lag and lng of your location
+        //set the currentPosition based on the lag and lng of clicking
       setCurrentPosition(e.latlng);
-        //moves the map to where the marker is
+        //shifts the map to where the marker is
       map.flyTo(e.latlng, map.getZoom());
     },
   });
