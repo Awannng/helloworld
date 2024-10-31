@@ -13,7 +13,7 @@ const HomePage = () => {
     <div className="relative h-screen w-screen">
       <div className="z-10">
         {/* Render the MapComponent to show the map */}
-        <MapComponent /> 
+        <MapComponent />
       </div>
 
       <div className="z-20">

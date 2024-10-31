@@ -74,7 +74,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
             }}
           />
           {/* if showPass is true, then it will show the hint, otherwise it will dispear */}
-          {showPass ? null : (
+          {showPass ?  (
             <p className="text-sm">
               Contains digits from 1 to 9 <br />
               one lowercase letter <br />
@@ -82,7 +82,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
               one special character <br />
               no space, 8-16 characters long
             </p>
-          )}
+          ): null}
         </div>
 
         {/* Login Button that checks if is authenticated, if is then it will jump to the Homepage*/}
