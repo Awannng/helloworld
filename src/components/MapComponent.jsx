@@ -15,6 +15,7 @@ import {
 // Import Leaflet's CSS to ensure map styles are applied correctly
 import "leaflet/dist/leaflet.css";
 import CurrentPosition from "./CurrentPosition";
+import AddPin from "./addPin";
 
 const MapComponent = () => {
   //sets the max boundary that can be dragged on the map, since the map has repeated area, this makes the boundry of one world map.
@@ -26,6 +27,9 @@ const MapComponent = () => {
 
   //prop of the CurrentPosition that tracks your current location
   const [currentPosition, setCurrentPosition] = useState(null);
+
+  //stores the locations that is being clicked on the map
+  const [pins, setPins] = useState([]);
 
   return (
     <>
@@ -54,6 +58,9 @@ const MapComponent = () => {
             currentPosition={currentPosition}
             setCurrentPosition={setCurrentPosition}
           />
+
+          {/* Adds a pin when click on the map */}
+          <AddPin pins={pins} setPins={setPins} />
         </MapContainer>
       </div>
     </>
