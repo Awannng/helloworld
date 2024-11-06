@@ -35,7 +35,7 @@ const MapComponent = () => {
     <>
       {/* Set the map container to absolute positioning and make it fill the
       entire parent container */}
-      <div className="absolute inset-0 top-0">
+      <div className="absolute inset-0 top-0 z-0">
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer
@@ -45,7 +45,7 @@ const MapComponent = () => {
           minZoom={3} //zoom out: lower the number, the more broad
           scrollWheelZoom={true} //disable the mousepad zoom in/out
           maxBounds={bounds}
-          className="h-full w-full"
+          className="h-full w-full z-0"
         >
           {/* Use an OpenStreetMap tile layer to display the map tiles with attribution */}
           <TileLayer

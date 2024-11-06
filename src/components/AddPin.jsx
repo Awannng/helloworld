@@ -1,5 +1,6 @@
 import React from "react";
 import { useMapEvents, Marker, Popup } from "react-leaflet";
+import PopupForm from "./PopupForm";
 
 const AddPin = ({ pins, setPins }) => {
   //uses click function to enable users to click on the map to get the location(lat and lng)
@@ -11,8 +12,8 @@ const AddPin = ({ pins, setPins }) => {
       setPins((prevPins) => [...prevPins, { lat, lng }]);
       //locate the pin
       map.locate();
-      console.log("add Pin");
-    }
+      console.log("add Pin"); //for checking whether we add the pin
+    },
   });
 
   return (
@@ -22,7 +23,8 @@ const AddPin = ({ pins, setPins }) => {
         ? pins.map((pin, idx) => (
             <Marker key={idx} position={pin}>
               <Popup>
-                Marker at [{pin.lat}, {pin.lng}]
+                {/* when click of the pin, it will show a pop up form that store the info of the palnned travel by aksing Country, Start Date, End Date */}
+                <PopupForm />
               </Popup>
             </Marker>
           ))

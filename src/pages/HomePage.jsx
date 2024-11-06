@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     // Set the container to relative positioning and make it fill the entire screen's height and width
     <div className="relative h-screen w-screen">
-      <div className="z-10">
+      <div className="z-0">
         {/* Render the MapComponent to show the map */}
         <MapComponent />
       </div>
