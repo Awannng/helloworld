@@ -35,7 +35,7 @@ const PopupForm = () => {
             <input
               className="mb-1 border"
               type="text"
-              value={country}
+              value={city}
               name="city"
               id="city"
               onChange={(e) => {
