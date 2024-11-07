@@ -12,7 +12,7 @@ const PopupForm = () => {
 
   return (
     <>
-      <div className="">
+
         <form>
           <div className="flex flex-col">
             {/* Input box for country */}
@@ -84,7 +84,7 @@ const PopupForm = () => {
             </button>
           </div>
         </form>
-      </div>
+
     </>
   );
 };

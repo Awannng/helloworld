@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 //import of the icons
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
-import { RiLockPasswordLine } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const LoginPage = ({ setIsAuthenticated }) => {
   //useState for the username
   const [username, setUsername] = useState("");
   //useState for the password
   const [password, setPassword] = useState("");
-  //useState for the password hint
-  const [showPass, setShowPass] = useState(false);
 
   const handleLogin = () => {
     // Simulate login, set authentication status to true
@@ -68,25 +65,6 @@ const LoginPage = ({ setIsAuthenticated }) => {
                 }}
               />
             </div>
-
-            {/* A dropdown shows the hint of the password */}
-            <FaRegQuestionCircle
-              className="inline-block"
-              // changes bool when clicking
-              onClick={() => {
-                setShowPass(!showPass);
-              }}
-            />
-            {/* if showPass is true, then it will show the hint, otherwise it will dispear */}
-            {showPass ? (
-              <p className="text-sm">
-                Contains digits from 1 to 9 <br />
-                one lowercase letter <br />
-                one uppercase letter <br />
-                one special character <br />
-                no space, 8-16 characters long
-              </p>
-            ) : null}
           </div>
 
           {/* Login Button that checks if is authenticated, if is then it will jump to the Homepage*/}

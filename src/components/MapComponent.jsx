@@ -4,13 +4,7 @@
 import React, { useState } from "react";
 
 // Import map-related components from 'react-leaflet'
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 
 // Import Leaflet's CSS to ensure map styles are applied correctly
 import "leaflet/dist/leaflet.css";

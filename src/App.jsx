@@ -46,7 +46,7 @@ function App() {
       <Route
         path="/createAccount"
         element={<CreateAccountPage />}
-        //Goes to the createaccount page from the button
+        //Goes to the createAccount page from the button
       />
     </Routes>
   );
