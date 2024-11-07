@@ -16,12 +16,12 @@ const CreateAccountPage = ({}) => {
     <>
       <form>
         {/* Centers the form */}
-        <div className="flex flex-col mr-auto ml-auto justify-center w-1/2 min-h-svh gap-5">
+        <div className="flex flex-col mr-auto ml-auto justify-center w-3/12 min-h-svh gap-5">
           <div className="flex flex-col">
             {/* Input box for username */}
             <label htmlFor="username">Username</label>
             <input
-              className="mb-1 border w-3/4"
+              className="mb-1 border"
               type="text"
               value={username}
               name="username"
@@ -29,51 +29,59 @@ const CreateAccountPage = ({}) => {
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
+              required
             />
           </div>
 
           {/* Input box for password */}
           <div className="flex flex-col">
+            {/* Show the requirment of the password in gray */}
+            <p className="text-sm text-slate-500">
+              Contains digits from 1 to 9 <br />
+              One lowercase letter <br />
+              One uppercase letter <br />
+              One special character <br />
+              No space, 8-16 characters long
+            </p>
             <label htmlFor="password">Password</label>
-            <div className="inline-block space-x-2">
-              <input
-                className="mb-1 border w-3/4"
-                type="text"
-                value={password}
-                name="password"
-                id="password"
-                pattern="/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              {/* A dropdown shows the hint of the password */}
-              <FaRegQuestionCircle
-                className="inline-block"
-                // changes bool when clicking
-                onClick={() => {
-                  setShowPass(!showPass);
-                }}
-              />
-            </div>
+            <input
+              className="mb-1 border"
+              type="text"
+              value={password}
+              name="password"
+              id="password"
+              pattern="/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              required
+            />
 
+            {/* A dropdown shows the hint of the password */}
+            {/* <FaRegQuestionCircle
+              className=""
+              // changes bool when clicking
+              onClick={() => {
+                setShowPass(!showPass);
+              }}
+            /> */}
             {/* if showPass is true, then it will show the hint, otherwise it will dispear */}
-            {showPass ? (
-              <p className="text-sm">
+            {/* {showPass ? (
+              <p className="text-sm text-slate-500">
                 Contains digits from 1 to 9 <br />
                 one lowercase letter <br />
                 one uppercase letter <br />
                 one special character <br />
                 no space, 8-16 characters long
               </p>
-            ) : null}
+            ) : null} */}
           </div>
 
           {/* Input box for comfirming password */}
           <div className="flex flex-col">
             <label htmlFor="confirm">Confirm Password</label>{" "}
             <input
-              className="mb-1 border w-3/4"
+              className="mb-1 border"
               type="text"
               value={confirm}
               name="confirm"
@@ -81,6 +89,7 @@ const CreateAccountPage = ({}) => {
               onChange={(e) => {
                 setConfirm(e.target.value);
               }}
+              required
             />
           </div>
 
@@ -88,7 +97,7 @@ const CreateAccountPage = ({}) => {
           <div className="mt-1 flex justify-center">
             <Link>
               <button
-                className=" bg-lime-700 text-white p-1 rounded-full"
+                className=" bg-lime-700 text-white p-1 rounded-full "
                 type="button"
               >
                 Create Account
