@@ -10,9 +10,9 @@ const AddPin = ({ pins, setPins }) => {
       const { lat, lng } = e.latlng;
       // add the location into pins plus any previous added pins
       setPins((prevPins) => [...prevPins, { lat, lng }]);
-      //locate the pin
-      map.locate();
+      
       console.log("add Pin"); //for checking whether we add the pin
+      
     },
   });
 
