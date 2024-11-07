@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import { useMapEvents, Marker, Popup } from "react-leaflet";
 import PopupForm from "./PopupForm";
 
@@ -16,12 +16,17 @@ const AddPin = ({ pins, setPins }) => {
     },
   });
 
+  //when adding the pin, the form will automatically pop up
+  const openPopup = (e) =>{
+        e.target.openPopup();
+    }
+
   return (
     <>
       {/* display the pins on the map */}
       {pins
         ? pins.map((pin, idx) => (
-            <Marker key={idx} position={pin}>
+            <Marker key={idx} position={pin} eventHandlers={{ add: openPopup }}>
               <Popup>
                 {/* when click of the pin, it will show a pop up form that store the info of the palnned travel by aksing Country, Start Date, End Date */}
                 <PopupForm />
