@@ -33,18 +33,22 @@ const MapComponent = () => {
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer
-          center={[51.505, -0.09]}
-          zoom={12}
-          maxZoom={10} // zoom in: higher the number, the more specific
+          center={[0,0]}
+          zoom={3}
+          maxZoom={6} // zoom in: higher the number, the more specific
           minZoom={3} //zoom out: lower the number, the more broad
           scrollWheelZoom={true} //disable the mousepad zoom in/out
-          maxBounds={bounds}
+          maxBounds={[[90, -180], [-60, 180]]}
           className="h-full w-full z-0"
+          dragging={true}
+          zoomAnimation={true} // Smooth zooming
+          fadeAnimation={true} // Smooth fading between tiles
         >
-          {/* Use an OpenStreetMap tile layer to display the map tiles with attribution */}
+           {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            preferCanvas={true}
           />
 
           {/* display the current location marker and reference based the props */}
