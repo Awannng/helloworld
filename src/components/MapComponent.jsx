@@ -9,7 +9,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 // Import Leaflet's CSS to ensure map styles are applied correctly
 import "leaflet/dist/leaflet.css";
 import CurrentPosition from "./CurrentPosition";
-import AddPin from "./addPin";
+import AddPin from "./AddPin";
 
 const MapComponent = () => {
   //sets the max boundary that can be dragged on the map, since the map has repeated area, this makes the boundry of one world map.
