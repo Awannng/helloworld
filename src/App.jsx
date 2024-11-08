@@ -17,7 +17,6 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 // Import HomePage component for the main/home route.
 import CreateAccountPage from "./pages/CreateAccountPage";
-// Import CreateAccountPage component for the account creation route.
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -50,10 +49,14 @@ function App() {
       <Route
         path="/login"
         element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
+        // Render LoginPage at '/login' path
+        // Pass 'setIsAuthenticated' to LoginPage so it can update the authentication state
       />
-      {/* Render LoginPage at "/login" path and pass setIsAuthenticated to update authentication status. */}
-      <Route path="/createAccount" element={<CreateAccountPage />} />
-      {/* Render CreateAccountPage at "/createAccount" path */}
+      <Route
+        path="/createAccount"
+        element={<CreateAccountPage />}
+        //Goes to the createAccount page from the button
+      />
     </Routes>
   );
 }
