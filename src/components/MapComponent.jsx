@@ -29,20 +29,24 @@ const MapComponent = () => {
     <>
       {/* Set the map container to absolute positioning and make it fill the
       entire parent container */}
-      <div className="absolute inset-0 top-0 z-0">
+      <div className="relative w-full h-screen">
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer
-          center={[0,0]}
+          center={[0,0]} // default is full view of map
           zoom={3}
           maxZoom={6} // zoom in: higher the number, the more specific
           minZoom={3} //zoom out: lower the number, the more broad
           scrollWheelZoom={true} //disable the mousepad zoom in/out
-          maxBounds={[[90, -180], [-60, 180]]}
-          className="h-full w-full z-0"
+          maxBounds={[
+            [82, -180], // South-West corner of bounding box
+            [-60, 180], // North-East corner of bounding box
+          ]}
+          maxBoundsViscosity={1.0} // prevents dragging past bounds
           dragging={true}
           zoomAnimation={true} // Smooth zooming
           fadeAnimation={true} // Smooth fading between tiles
+          className="h-full w-full z-0"
         >
            {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
           <TileLayer

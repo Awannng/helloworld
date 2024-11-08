@@ -1,21 +1,24 @@
 import React, { useEffect } from "react";
 import { useMapEvents, useMap, Marker, Popup } from "react-leaflet";
 
-const CurrentPosition = ({ currentPosition, setCurrentPosition }) => {
+// added activateGeolocation so this doesn't happen every render
+const CurrentPosition = ({ currentPosition, setCurrentPosition, activateGeolocation }) => {
   //allows to access the map instance directly
   const map = useMap();
 
-  //Automatically jump to the current position the user is at and adds a pin to it
-  //render based on the map
+  //If activateGeolocation, jumps to the current position the user is at and adds a pin to it
   useEffect(() => {
-    //locates the current position
-    map.locate().on("locationfound", (e) => {
+    if (activateGeolocation){
+      //locates the current position
+      map.locate().on("locationfound", (e) => {
       //set the current position based on e
       setCurrentPosition(e.latlng);
       //shifts the map to where the pin is
       map.flyTo(e.latlng, map.getZoom());
-    });
-  }, [map]);
+      console.log("located current position")
+      });
+    }
+  }, [map, activateGeolocation]);
 
   return (
     <>

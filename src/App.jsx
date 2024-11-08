@@ -10,6 +10,7 @@ import {
 import LoginPage from "./pages/LoginPage"; // Importing the LoginPage component
 import HomePage from "./pages/HomePage"; // Importing the HomePage component
 import CreateAccountPage from "./pages/CreateAccountPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,6 +48,16 @@ function App() {
         path="/createAccount"
         element={<CreateAccountPage />}
         //Goes to the createAccount page from the button
+      />
+      <Route
+        path="/profile"
+        element={<ProfilePage />}
+      />
+
+      {/* Fallback Route for any unknown paths */}
+      <Route
+        path="*"
+        element={<Navigate to="/" />} // Redirect to home page or a 404 page
       />
     </Routes>
   );
