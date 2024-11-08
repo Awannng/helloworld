@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
-// Importing necessary hooks and components from React and react-router-dom
+import { useState, useEffect } from "react"; 
+// Import useState and useEffect hooks from React for state management and side effects.
+import { GoogleOAuthProvider } from '@react-oauth/google';
+// Import GoogleOAuthProvider for integrating Google OAuth authentication.
 import {
   BrowserRouter,
   Routes,
@@ -7,27 +9,33 @@ import {
   Navigate,
   useNavigate,
 } from "react-router-dom";
-import LoginPage from "./pages/LoginPage"; // Importing the LoginPage component
-import HomePage from "./pages/HomePage"; // Importing the HomePage component
+// Import routing components from react-router-dom: BrowserRouter for routing context, 
+// Routes and Route for defining paths, Navigate for redirection, and useNavigate for programmatic navigation.
+
+import LoginPage from "./pages/LoginPage";
+// Import LoginPage component for the login route.
+import HomePage from "./pages/HomePage";
+// Import HomePage component for the main/home route.
 import CreateAccountPage from "./pages/CreateAccountPage";
-import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // Declaring a state variable 'isAuthenticated' to track if the user is logged in
-  // 'setIsAuthenticated' is the function to update this state
-
+  // Define a state variable isAuthenticated to track if the user is logged in; initialized to false.
   const navigate = useNavigate();
-  // useNavigate hook returns a navigation function which allows for programmatic navigation
+  // Get the navigate function from react-router-dom to allow for programmatic navigation.
 
   useEffect(() => {
+    console.log("Authentication status:", isAuthenticated);
+    // Log the current authentication status to the console for debugging.
     if (isAuthenticated) {
+      console.log("Navigating to home page");
+      // If isAuthenticated is true, log a message indicating redirection to the home page.
       navigate("/");
-      // If the user is authenticated, navigate them to the homepage ('/')
+      // Navigate to the home page ("/") if the user is authenticated.
     }
   }, [isAuthenticated, navigate]);
-  // useEffect hook that runs whenever 'isAuthenticated' or 'navigate' changes
-  // Ensures that if 'isAuthenticated' becomes true, the user is redirected to '/'
+  // useEffect runs whenever isAuthenticated or navigate changes.
+  // This checks the authentication status and navigates if necessary.
 
   return (
     <Routes>
@@ -35,9 +43,9 @@ function App() {
       <Route
         path="/"
         element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
-        // If user is authenticated, render HomePage at the root path '/'
-        // Otherwise, redirect to '/login' using the Navigate component
       />
+      {/* If user is authenticated, render HomePage at the root path ("/");
+          otherwise, redirect to "/login". */}
       <Route
         path="/login"
         element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
@@ -49,25 +57,21 @@ function App() {
         element={<CreateAccountPage />}
         //Goes to the createAccount page from the button
       />
-      <Route
-        path="/profile"
-        element={<ProfilePage />}
-      />
-
-      {/* Fallback Route for any unknown paths */}
-      <Route
-        path="*"
-        element={<Navigate to="/" />} // Redirect to home page or a 404 page
-      />
     </Routes>
   );
 }
 
 export default function RootApp() {
   return (
-    <BrowserRouter>
-      <App />
-      {/* BrowserRouter provides routing context for the entire app */}
-    </BrowserRouter>
+    <GoogleOAuthProvider clientId="584140172046-gkgm53jvaso7vqrvh75r1lsc3dvdk1qa.apps.googleusercontent.com">
+      {/* Wrap the application in GoogleOAuthProvider to enable Google OAuth login,
+          with the clientId from Google Cloud Console */}
+      <BrowserRouter>
+        {/* Wrap App with BrowserRouter to enable routing throughout the application */}
+        <App />
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
+
+

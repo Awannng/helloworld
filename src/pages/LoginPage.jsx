@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 //import of the icons
 import { FaRegUser } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+
 import { RiLockPasswordLine } from "react-icons/ri";
+import GoogleLoginComponent from "../components/GoogleLogin"
 
 const LoginPage = ({ setIsAuthenticated }) => {
   //useState for the username
@@ -90,12 +91,10 @@ const LoginPage = ({ setIsAuthenticated }) => {
 
         {/* Third Party Login */}
         <div className="mt-6 flex justify-center items-center gap-2">
-          <p className="text-sm">Other Methods:</p>
-          {/* When click, it goes to the google sign in page */}
-          <Link>
-            <FcGoogle className="size-6" />
-          </Link>
-        </div>
+        <p className="text-sm">Other Methods:</p>
+        {/*pass setIsAuthenticated as parameter to GoogleLoginComponent */}
+        <GoogleLoginComponent setIsAuthenticated={setIsAuthenticated}/> 
+      </div>
       </div>
     </>
   );
