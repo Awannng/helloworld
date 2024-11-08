@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 // Import useState and useEffect hooks from React for state management and side effects.
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 // Import GoogleOAuthProvider for integrating Google OAuth authentication.
 import {
   BrowserRouter,
@@ -9,7 +9,7 @@ import {
   Navigate,
   useNavigate,
 } from "react-router-dom";
-// Import routing components from react-router-dom: BrowserRouter for routing context, 
+// Import routing components from react-router-dom: BrowserRouter for routing context,
 // Routes and Route for defining paths, Navigate for redirection, and useNavigate for programmatic navigation.
 
 import LoginPage from "./pages/LoginPage";
@@ -17,6 +17,7 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 // Import HomePage component for the main/home route.
 import CreateAccountPage from "./pages/CreateAccountPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -57,6 +58,11 @@ function App() {
         element={<CreateAccountPage />}
         //Goes to the createAccount page from the button
       />
+      <Route
+        path="/profile"
+        element={<ProfilePage />}
+        //Goes to the createAccount page from the button
+      />
     </Routes>
   );
 }
@@ -73,5 +79,3 @@ export default function RootApp() {
     </GoogleOAuthProvider>
   );
 }
-
-

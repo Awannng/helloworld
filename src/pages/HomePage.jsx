@@ -2,7 +2,7 @@
 
 // Import React library for creating the React component
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
 import TimeLine from "../components/TimeLine";
@@ -12,7 +12,7 @@ const HomePage = () => {
 
   // Navigate to Profile page, doesn't work at the moment
   const goToProfile = () => {
-    navigate('/profile');
+    navigate("/profile");
   };
 
   return (
@@ -23,13 +23,16 @@ const HomePage = () => {
         <MapComponent />
       </div>
 
-      <div className="z-20">
+      {/* <div className="z-20">
         <TimeLine />
-      </div>
+      </div> */}
 
       {/*Button to Profile Page*/}
-      <div className="absolute top-4 left-4 z-30">
-        <button onClick={(e) => goToProfile(e)} className="bg-yellow-400 left-4 z-30">
+      <div className="absolute top-20 left-4 z-30">
+        <button
+          onClick={(e) => goToProfile(e)}
+          className="bg-yellow-400 left-4 z-30"
+        >
           Profile Page
         </button>
       </div>
