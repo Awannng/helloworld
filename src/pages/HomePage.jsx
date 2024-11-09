@@ -10,12 +10,14 @@ import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
 const HomePage = ({
-  setIsAuthenticated, isAuthenticated,
+  setIsAuthenticated,
+  isAuthenticated,
   clickProfile,
   setProfile,
 }) => {
   const navigate = useNavigate();
 
+  //when click Log Out, set the isAuthenticated=false and go to the login page
   const signOut = () => {
     setIsAuthenticated(!isAuthenticated);
     navigate("/login");
@@ -32,21 +34,25 @@ const HomePage = ({
         <button onClick={() => setMenu(!menu)}>
           <Logo />
         </button>
+
         {/* When click the on the logo, it shows a dropdown menu */}
         {menu && (
           <div className="absolute top-10 right-5 translate-y-1/2">
             <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
               <button
+                // When click on the button, it changes the clickProfile to true which will goes back to the App.jsx to check
                 onClick={(e) => setProfile(!clickProfile)}
                 className="hover:bg-slate-100 rounded-md p-2"
               >
                 <Link to="/profile">Profile</Link>
               </button>
 
-              <button className="hover:bg-slate-100 rounded-md  p-2">
-                <Link onClick={signOut} to="/login">
-                  Log Out
-                </Link>
+              <button
+                //When click, it will goes back to the login page
+                onClick={signOut}
+                className="hover:bg-slate-100 rounded-md p-2"
+              >
+                <Link to="/login">Log Out</Link>
               </button>
             </div>
           </div>

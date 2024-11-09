@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 
 import { RiLockPasswordLine } from "react-icons/ri";
-import GoogleLoginComponent from "../components/GoogleLogin"
+import GoogleLoginComponent from "../components/GoogleLogin";
+import Logo from "../components/Logo";
 
 const LoginPage = ({ setIsAuthenticated }) => {
   //useState for the username
   const [username, setUsername] = useState("");
   //useState for the password
   const [password, setPassword] = useState("");
-
 
   const handleLogin = () => {
     // Simulate login, set authentication status to true
@@ -26,18 +26,23 @@ const LoginPage = ({ setIsAuthenticated }) => {
       <div
         className="place-content-center"
         style={{
-          padding: "20px",
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "#cae4c5",
           minHeight: "100vh",
           textAlign: "center",
         }}
       >
-        <h1 className="text-lg">Welcome to Hello World</h1>
+        <div className="text-center mb-5">
+          <h1 className="text-5xl text-sky-800">Hello World travels with you</h1>
+        </div>
 
         {/* Adds a border and darker shade of color around the input boxes fotr login */}
-        <div className="border rounded-lg p-2 mr-auto ml-auto w-1/3 bg-gray-200">
+        <div className=" rounded-lg p-2 mr-auto ml-auto w-1/3 bg-lime-100">
           {/* Inputbox for username and password */}
-          <div className="flex flex-col justify-center items-center gap-3 m-5">
+          <div className="flex flex-col justify-center items-center gap-3">
+            <div className="-mb-5">
+              <Logo />
+            </div>
+
             <div className="flex gap-2 items-center justify-center">
               {/* Icon for the username */}
               <FaRegUser />
@@ -71,7 +76,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
 
           {/* Login Button that checks if is authenticated, if is then it will jump to the Homepage*/}
           <button
-            className="bg-green-600 rounded-full p-2 text-white hover:bg-lime-800 text-sm"
+            className="bg-green-600 rounded-full p-2 text-white hover:bg-lime-800 text-sm mt-4"
             onClick={handleLogin}
           >
             Login
@@ -92,10 +97,10 @@ const LoginPage = ({ setIsAuthenticated }) => {
 
         {/* Third Party Login */}
         <div className="mt-6 flex justify-center items-center gap-2">
-        <p className="text-sm">Other Methods:</p>
-        {/*pass setIsAuthenticated as parameter to GoogleLoginComponent */}
-        <GoogleLoginComponent setIsAuthenticated={setIsAuthenticated}/> 
-      </div>
+          <p className="text-sm">Other Method:</p>
+          {/*pass setIsAuthenticated as parameter to GoogleLoginComponent */}
+          <GoogleLoginComponent setIsAuthenticated={setIsAuthenticated} />
+        </div>
       </div>
     </>
   );
