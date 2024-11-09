@@ -94,7 +94,7 @@ const CreateAccountPage = ({}) => {
           </div>
 
           {/* Create account button to have the data send to the database */}
-          <div className="mt-1 flex justify-center">
+          <div className="mt-1 flex flex-col gap-10 justify-center">
             <Link>
               <button
                 className=" bg-lime-700 text-white p-1 rounded-full "
@@ -102,6 +102,12 @@ const CreateAccountPage = ({}) => {
               >
                 Create Account
               </button>
+            </Link>
+
+            <Link to='/login'>
+              <div className="text-blue-600">
+                Back to Login
+              </div>
             </Link>
           </div>
         </div>

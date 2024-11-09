@@ -60,7 +60,7 @@ function App() {
       />
       <Route
         path="/profile"
-        element={<ProfilePage />}
+        element={ <ProfilePage />}
         //Goes to the createAccount page from the button
       />
     </Routes>

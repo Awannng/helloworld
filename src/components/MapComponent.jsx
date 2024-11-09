@@ -12,13 +12,6 @@ import CurrentPosition from "./CurrentPosition";
 import AddPin from "./AddPin";
 
 const MapComponent = () => {
-  //sets the max boundary that can be dragged on the map, since the map has repeated area, this makes the boundry of one world map.
-  //lat and long
-  const bounds = [
-    [-78.87, -173.961], // South West corner
-    [83.29, 189.501], // North East corner
-  ];
-
   //prop of the CurrentPosition that tracks your current location
   const [currentPosition, setCurrentPosition] = useState(null);
 
@@ -29,7 +22,7 @@ const MapComponent = () => {
     <>
       {/* Set the map container to absolute positioning and make it fill the
       entire parent container */}
-      <div className="relative w-full h-screen">
+      <div className="w-full h-screen">
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer
@@ -46,7 +39,7 @@ const MapComponent = () => {
           dragging={true}
           zoomAnimation={true} // Smooth zooming
           fadeAnimation={true} // Smooth fading between tiles
-          className="h-full w-full z-0"
+          className="h-full w-full z-10"
         >
            {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
           <TileLayer

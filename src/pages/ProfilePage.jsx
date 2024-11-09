@@ -18,7 +18,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 z-0">
             {/* Navigate back to Home Page */}
             <div className="absolute top-4 left-4 z-30">
                 <button onClick={goToHomePage} className="bg-yellow-400 left-4 z-30">

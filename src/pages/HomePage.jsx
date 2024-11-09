@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
 import TimeLine from "../components/TimeLine";
+import Logo from "../components/Logo";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -17,8 +19,18 @@ const HomePage = () => {
 
   return (
     // Set the container to relative positioning and make it fill the entire screen's height and width
-    <div className="relative h-screen w-screen">
-      <div className="z-0">
+    <div className=" h-screen w-screen">
+      {/* Gos to the Profile Page */}
+      <div className="absolute top-20 left-4 bg-yellow-400 z-30">
+        <button onClick={goToProfile}>Profile Page</button>
+      </div>
+
+      {/* Logo at the bottom left corner */}
+      <div className="absolute bottom-1.5 -left-6 z-30">
+        <Logo />
+      </div>
+
+      <div className="-z-10">
         {/* Render the MapComponent to show the map */}
         <MapComponent />
       </div>
@@ -26,16 +38,6 @@ const HomePage = () => {
       {/* <div className="z-20">
         <TimeLine />
       </div> */}
-
-      {/*Button to Profile Page*/}
-      <div className="absolute top-20 left-4 z-30">
-        <button
-          onClick={(e) => goToProfile(e)}
-          className="bg-yellow-400 left-4 z-30"
-        >
-          Profile Page
-        </button>
-      </div>
     </div>
   );
 };
