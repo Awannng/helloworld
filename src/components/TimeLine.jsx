@@ -43,7 +43,7 @@ const location = [
 const TimeLine = () => {
   return (
     <>
-      <div className="w-full h-80">
+      <div className="w-3/4 h-28 bg-slate-600 rounded-full opacity-45">
         
       </div>
     </>

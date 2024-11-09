@@ -20,14 +20,14 @@ const HomePage = () => {
   return (
     // Set the container to relative positioning and make it fill the entire screen's height and width
     <div className=" h-screen w-screen">
+      {/* Logo at the top-left corner */}
+      <div className="absolute top-0 right-0 z-30">
+        <Logo />
+      </div>
+
       {/* Gos to the Profile Page */}
       <div className="absolute top-20 left-4 bg-yellow-400 z-30">
         <button onClick={goToProfile}>Profile Page</button>
-      </div>
-
-      {/* Logo at the bottom left corner */}
-      <div className="absolute bottom-1.5 -left-6 z-30">
-        <Logo />
       </div>
 
       <div className="-z-10">
@@ -35,9 +35,10 @@ const HomePage = () => {
         <MapComponent />
       </div>
 
-      {/* <div className="z-20">
-        <TimeLine />
-      </div> */}
+      {/* Display the TimeLine at the bottom of the page */}
+      <div className="flex justify-center absolute bottom-1.5 -left-6 z-30 w-full">
+        <TimeLine/>
+      </div>
     </div>
   );
 };

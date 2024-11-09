@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 
 // Import map-related components from 'react-leaflet'
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
 
 // Import Leaflet's CSS to ensure map styles are applied correctly
 import "leaflet/dist/leaflet.css";
@@ -26,7 +26,7 @@ const MapComponent = () => {
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer
-          center={[0,0]} // default is full view of map
+          center={[0, 0]} // default is full view of map
           zoom={3}
           maxZoom={6} // zoom in: higher the number, the more specific
           minZoom={3} //zoom out: lower the number, the more broad
@@ -41,7 +41,8 @@ const MapComponent = () => {
           fadeAnimation={true} // Smooth fading between tiles
           className="h-full w-full z-10"
         >
-           {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
+
+          {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
