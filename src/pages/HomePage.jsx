@@ -9,8 +9,17 @@ import TimeLine from "../components/TimeLine";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
-const HomePage = ({ isAuthenticated, clickProfile, setProfile }) => {
+const HomePage = ({
+  setIsAuthenticated, isAuthenticated,
+  clickProfile,
+  setProfile,
+}) => {
   const navigate = useNavigate();
+
+  const signOut = () => {
+    setIsAuthenticated(!isAuthenticated);
+    navigate("/login");
+  };
 
   //shows the dropdown menu
   const [menu, setMenu] = useState(false);
@@ -27,12 +36,17 @@ const HomePage = ({ isAuthenticated, clickProfile, setProfile }) => {
         {menu && (
           <div className="absolute top-10 right-5 translate-y-1/2">
             <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
-              <button onClick={(e) => setProfile(!clickProfile)} className="hover:bg-slate-100 rounded-md p-2">
+              <button
+                onClick={(e) => setProfile(!clickProfile)}
+                className="hover:bg-slate-100 rounded-md p-2"
+              >
                 <Link to="/profile">Profile</Link>
               </button>
 
               <button className="hover:bg-slate-100 rounded-md  p-2">
-                <Link  to="/login">{isAuthenticated ? "Log Out" : "Login"}</Link>
+                <Link onClick={signOut} to="/login">
+                  Log Out
+                </Link>
               </button>
             </div>
           </div>

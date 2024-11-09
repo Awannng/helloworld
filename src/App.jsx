@@ -56,6 +56,7 @@ function App() {
           isAuthenticated ? (
             <HomePage
               isAuthenticated={isAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
               clickProfile={clickProfile}
               setProfile={setProfile}
             />
