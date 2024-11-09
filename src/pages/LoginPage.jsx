@@ -12,6 +12,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
   //useState for the password
   const [password, setPassword] = useState("");
 
+
   const handleLogin = () => {
     // Simulate login, set authentication status to true
     console.log("Login button clicked"); // Debugging.I'm getting an error reporting that the page can't be displayed so I'm printing out the output to check for problems

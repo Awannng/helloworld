@@ -25,14 +25,23 @@ function App() {
   const navigate = useNavigate();
   // Get the navigate function from react-router-dom to allow for programmatic navigation.
 
+
+  //when click the Profile in the logo of the homepage, set clickProfile=true and set as prop for the Homepage and ProfilePage component
+  const [clickProfile, setProfile] = useState(false);
+
   useEffect(() => {
     console.log("Authentication status:", isAuthenticated);
     // Log the current authentication status to the console for debugging.
     if (isAuthenticated) {
       console.log("Navigating to home page");
-      // If isAuthenticated is true, log a message indicating redirection to the home page.
-      navigate("/");
-      // Navigate to the home page ("/") if the user is authenticated.
+
+      if (clickProfile) {
+        navigate("/profile");
+      } else {
+        // If isAuthenticated is true, log a message indicating redirection to the home page.
+        navigate("/");
+        // Navigate to the home page ("/") if the user is authenticated.
+      }
     }
   }, [isAuthenticated, navigate]);
   // useEffect runs whenever isAuthenticated or navigate changes.
@@ -43,7 +52,17 @@ function App() {
       {/* Define all routes within the Routes component */}
       <Route
         path="/"
-        element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
+        element={
+          isAuthenticated ? (
+            <HomePage
+              isAuthenticated={isAuthenticated}
+              clickProfile={clickProfile}
+              setProfile={setProfile}
+            />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
       />
       {/* If user is authenticated, render HomePage at the root path ("/");
           otherwise, redirect to "/login". */}
@@ -60,7 +79,9 @@ function App() {
       />
       <Route
         path="/profile"
-        element={ <ProfilePage />}
+        element={
+          <ProfilePage clickProfile={clickProfile} setProfile={setProfile} />
+        }
         //Goes to the createAccount page from the button
       />
     </Routes>

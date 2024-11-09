@@ -9,14 +9,10 @@ import TimeLine from "../components/TimeLine";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = ({ isAuthenticated, clickProfile, setProfile }) => {
   const navigate = useNavigate();
 
-  // Navigate to Profile page, doesn't work at the moment
-  const goToProfile = () => {
-    navigate("/profile");
-  };
-
+  //shows the dropdown menu
   const [menu, setMenu] = useState(false);
 
   return (
@@ -31,19 +27,16 @@ const HomePage = () => {
         {menu && (
           <div className="absolute top-10 right-5 translate-y-1/2">
             <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
-              <div className="hover:bg-slate-100 rounded-md p-2">
+              <button onClick={(e) => setProfile(!clickProfile)} className="hover:bg-slate-100 rounded-md p-2">
                 <Link to="/profile">Profile</Link>
-              </div>
-              <div className="hover:bg-slate-100 rounded-md  p-2">
-                <Link to="/login">Login</Link>
-              </div>
+              </button>
+
+              <button className="hover:bg-slate-100 rounded-md  p-2">
+                <Link  to="/login">{isAuthenticated ? "Log Out" : "Login"}</Link>
+              </button>
             </div>
           </div>
         )}
-      </div>
-      {/* Gos to the Profile Page */}
-      <div className="absolute top-20 left-4 bg-yellow-400 z-30">
-        <button onClick={goToProfile}>Profile Page</button>
       </div>
 
       <div className="-z-10">
@@ -52,9 +45,9 @@ const HomePage = () => {
       </div>
 
       {/* Display the TimeLine at the bottom of the page */}
-      <div className="flex justify-center absolute bottom-1.5 -left-6 z-30 w-full">
+      {/* <div className="flex justify-center absolute bottom-1.5 -left-6 z-30 w-full">
         <TimeLine />
-      </div>
+      </div> */}
     </div>
   );
 };
