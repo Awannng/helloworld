@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 //search location
 import { OpenStreetMapProvider, GeoSearchControl } from "leaflet-geosearch";
 import { useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import "leaflet-geosearch/dist/geosearch.css";
 
 const SearchBar = () => {
@@ -16,6 +15,7 @@ const SearchBar = () => {
     const searchControl = new GeoSearchControl({
       provider: provider,
       notFoundMessage: "Sorry, that place could not be found.",
+      showMarker: false,
     });
 
     //add the search button to the map
