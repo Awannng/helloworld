@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PopupForm = () => {
+const PopupForm = ({ pins, setPins, pos }) => {
   //store the data of country
   const [country, setCountry] = useState("");
   //store the data of the city
@@ -11,6 +11,12 @@ const PopupForm = () => {
   const [endDate, setEndDate] = useState("");
 
   const [notes, setNotes] = useState([]);
+
+  // const removeMarker = (pos) => {
+  //   setPins((prevPins) =>
+  //     prevPins.filter((pins) => JSON.stringify(pins) !== JSON.stringify(pos))
+  //   );
+  // };
   return (
     <>
       <form>
@@ -90,13 +96,21 @@ const PopupForm = () => {
         </div>
 
         {/* Submit button to have the data send to the database */}
-        <div className="mt-1 flex justify-center">
+        <div className="mt-1 flex justify-center gap-2">
           <button
             className=" bg-lime-700 text-white p-1 rounded-full"
             type="button"
           >
             Save
           </button>
+
+          {/* <button
+            className="bg-red-500 text-white p-1 rounded-full"
+            type="button"
+            onClick={() => removeMarker(pos)}
+          >
+            Delete
+          </button> */}
         </div>
       </form>
     </>
