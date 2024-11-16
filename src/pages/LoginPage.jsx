@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 //import of the icons
 import { FaRegUser } from "react-icons/fa";
+import { loginUser } from "../api/userService"; 
 
 import { RiLockPasswordLine } from "react-icons/ri";
 import GoogleLoginComponent from "../components/GoogleLogin";
@@ -13,13 +14,33 @@ const LoginPage = ({ setIsAuthenticated }) => {
   //useState for the password
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // Simulate login, set authentication status to true
-    console.log("Login button clicked"); // Debugging.I'm getting an error reporting that the page can't be displayed so I'm printing out the output to check for problems
-
-    //Monitor user click event and update boolean values
-    setIsAuthenticated(true);
+  const handleLogin = async () => {
+    // Log a message when the login button is clicked
+    console.log("Login button clicked");
+  
+    // Check if username or password fields are empty
+    if (!username || !password) {
+      alert("Please enter both username and password."); // Alert the user if input fields are empty
+      return; // Exit the function early if input validation fails
+    }
+  
+    try {
+      // Call the backend API to perform the login action
+      const response = await loginUser({ username, password }); // Replace with your `loginUser` function
+      console.log("Login successful:", response); // Log the successful response from the backend
+  
+      // If login is successful, update the authentication status and notify the user
+      setIsAuthenticated(true); // Update the state to indicate the user is authenticated
+      alert("Login successful!"); // Display a success message to the user
+    } catch (error) {
+      // Log the error message if the login fails
+      console.error("Login failed:", error.message);
+  
+      // Display an error message to the user with details of the failure
+      alert("Login failed: " + error.message);
+    }
   };
+  
 
   return (
     <>
