@@ -9,15 +9,19 @@ const SearchBar = () => {
   const map = useMap();
 
   useEffect(() => {
+    //the map provider that we can search on
     const provider = new OpenStreetMapProvider();
 
+    //allow to search
     const searchControl = new GeoSearchControl({
       provider: provider,
       notFoundMessage: "Sorry, that place could not be found.",
     });
 
-
+    //add the search button to the map
     map.addControl(searchControl);
+
+    //it won't repeat the search button when click on the map
     return () => map.removeControl(searchControl);
   });
 

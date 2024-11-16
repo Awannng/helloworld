@@ -42,6 +42,7 @@ const MapComponent = () => {
           dragging={true}
           zoomAnimation={true} // Smooth zooming
           fadeAnimation={true} // Smooth fading between tiles
+          zoomControl={false}
           className="h-full w-full z-10"
         >
           {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
@@ -60,11 +61,15 @@ const MapComponent = () => {
           {/* Adds a pin when click on the map */}
           <AddPin pins={pins} setPins={setPins} />
 
-          <div className="flex justify-center absolute top-10 z-30 w-full">
+          {/* Moved the zoom button to the bottom right corner */}
+          <ZoomControl
+            position="bottomright"
+          />
+
+          {/* Shows the search button on the map */}
+          <div className="flex justify-center">
             <SearchBar />
           </div>
-
-
         </MapContainer>
       </div>
     </>
