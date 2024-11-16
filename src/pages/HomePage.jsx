@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
+import SearchBar from "../components/SearchBar";
 import TimeLine from "../components/TimeLine";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
@@ -63,6 +64,10 @@ const HomePage = ({
         {/* Render the MapComponent to show the map */}
         <MapComponent />
       </div>
+
+      {/* <div className="flex justify-center absolute top-10 z-30 w-full">
+        <SearchBar />
+      </div> */}
 
       {/* Display the TimeLine at the bottom of the page */}
       {/* <div className="flex justify-center absolute bottom-1.5 -left-6 z-30 w-full">

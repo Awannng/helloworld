@@ -10,6 +10,8 @@ import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import CurrentPosition from "./CurrentPosition";
 import AddPin from "./AddPin";
+import SearchBar from "../components/SearchBar";
+import { OpenStreetMapProvider } from "leaflet-geosearch";
 
 const MapComponent = () => {
   //prop of the CurrentPosition that tracks your current location
@@ -18,6 +20,7 @@ const MapComponent = () => {
   //stores the locations that is being clicked on the map
   const [pins, setPins] = useState([]);
 
+  const prov = new OpenStreetMapProvider();
   return (
     <>
       {/* Set the map container to absolute positioning and make it fill the
@@ -41,7 +44,6 @@ const MapComponent = () => {
           fadeAnimation={true} // Smooth fading between tiles
           className="h-full w-full z-10"
         >
-
           {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -57,6 +59,12 @@ const MapComponent = () => {
 
           {/* Adds a pin when click on the map */}
           <AddPin pins={pins} setPins={setPins} />
+
+          <div className="flex justify-center absolute top-10 z-30 w-full">
+            <SearchBar />
+          </div>
+
+
         </MapContainer>
       </div>
     </>
