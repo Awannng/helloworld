@@ -4,7 +4,7 @@ import PopupForm from "./PopupForm";
 
 const AddPin = ({ pins, setPins }) => {
   //uses click function to enable users to click on the map to get the location(lat and lng)
-  const map = useMapEvents({
+  useMapEvents({
     click(e) {
       //destructure the lat and lng from e
       const { lat, lng } = e.latlng;
@@ -42,17 +42,20 @@ const AddPin = ({ pins, setPins }) => {
             }}
           >
             <Popup>
+              {/* when click of the pin, it will show a pop up form that store the info of the palnned travel by aksing Country, Start Date, End Date */}
+              <PopupForm pos={pin} pins={pins} setPins={setPins} />
+
               {/* Delete pin button */}
               <button
                 className=" text-red-700 mb-2"
-                onClick={() => removePin(pin)}
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent the map click from triggering
+                  removePin(pin); //removes the pin
+                }}
                 type="button"
               >
                 Delete
               </button>
-
-              {/* when click of the pin, it will show a pop up form that store the info of the palnned travel by aksing Country, Start Date, End Date */}
-              <PopupForm pos={pin} pins={pins} setPins={setPins} />
             </Popup>
           </Marker>
         ))}
