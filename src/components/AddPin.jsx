@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { useMapEvents, Marker, Popup } from "react-leaflet";
 import PopupForm from "./PopupForm";
 
@@ -22,7 +22,6 @@ const AddPin = ({ pins, setPins }) => {
   };
 
   //Deletes the marker when click on the "delete" button, this filters the pin where the lat or lon are not equal
-  //issue: pins other place when click on delete
   const removePin = (pin) => {
     setPins(
       (prevPins) =>
@@ -43,7 +42,7 @@ const AddPin = ({ pins, setPins }) => {
           >
             <Popup>
               {/* when click of the pin, it will show a pop up form that store the info of the palnned travel by aksing Country, Start Date, End Date */}
-              <PopupForm pos={pin} pins={pins} setPins={setPins} />
+              <PopupForm />
 
               {/* Delete pin button */}
               <button
