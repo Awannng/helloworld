@@ -3,16 +3,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* This is the styling for the navBar ul list.*/
-.navbar--list {
-  @apply p-3 hover:bg-white
-   hover:cursor-pointer 
-   hover:text-black 
-   flex justify-between;
-}
-
-.textarea--postbox {
-  box-sizing: border-box;
-  max-width: 100%;
-}

@@ -1,5 +1,6 @@
 import React from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import Logo from "../components/Logo";
 
 const ProfilePage = ({clickProfile, setProfile}) => {
   const navigate = useNavigate();
@@ -21,9 +22,9 @@ const ProfilePage = ({clickProfile, setProfile}) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 z-0">
       {/* Navigate back to Home Page */}
-      <div className="absolute top-4 left-4 z-30">
-        <button onClick={goToHomePage} className="bg-yellow-400 left-4 z-30">
-          Back to Home Page
+      <div className="absolute top-0 left-0 z-30">
+        <button onClick={goToHomePage}>
+          <Logo/>
         </button>
       </div>
 
@@ -40,7 +41,6 @@ const ProfilePage = ({clickProfile, setProfile}) => {
 
         {/* Horizontal Line behind Profile Picture (under construction)*/}
         <div className="relative mb-4 max-w-full w-full flex justify-center">
-          
           {/* The horizontal line behind the profile image */}
           <div className="absolute top-1/2 transform -translate-y-1/2 border-t-8 border-white w-[90vw]"></div>
 

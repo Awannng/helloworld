@@ -16,6 +16,7 @@ const SearchBar = () => {
       provider: provider,
       notFoundMessage: "Sorry, that place could not be found.",
       showMarker: false,
+      position: "bottomright",
     });
 
     //add the search button to the map
