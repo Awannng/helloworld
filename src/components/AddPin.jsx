@@ -21,13 +21,6 @@ const AddPin = ({ pins, setPins }) => {
     e.target.openPopup();
   };
 
-  //Deletes the marker when click on the "delete" button, this filters the pin where the lat or lon are not equal
-  const removePin = (pin) => {
-    setPins(
-      (prevPins) =>
-        prevPins.filter((p) => p.lat !== pin.lat || p.lng !== pin.lng) // Remove the specific pin
-    );
-  };
   return (
     <>
       {/* display the pins on the map */}
@@ -42,19 +35,8 @@ const AddPin = ({ pins, setPins }) => {
           >
             <Popup>
               {/* when click of the pin, it will show a pop up form that store the info of the palnned travel by aksing Country, Start Date, End Date */}
-              <PopupForm />
-
-              {/* Delete pin button */}
-              <button
-                className=" text-red-700 mb-2"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent the map click from triggering
-                  removePin(pin); //removes the pin
-                }}
-                type="button"
-              >
-                Delete
-              </button>
+              {/* The pin and setPins props are passed down for the removePin function button */}
+              <PopupForm pin={pin} setPins={setPins} />
             </Popup>
           </Marker>
         ))}
