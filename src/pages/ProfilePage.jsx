@@ -22,46 +22,42 @@ const ProfilePage = ({clickProfile, setProfile}) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 z-0">
       {/* Navigate back to Home Page */}
-      <div className="absolute top-0 left-0 z-30">
+      <div className="absolute top-0 left-0">
         <button onClick={goToHomePage}>
           <Logo/>
         </button>
       </div>
 
       {/* Profile Page Container */}
-      <div className="flex flex-col items-center justify-center p-10 bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[80vh] mt-5 overflow-hidden">
+      <div className="flex flex-col items-center justify-start bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[88vh] mt-20 overflow-hidden">
         {/* Profile Banner (under construction) */}
-        {/* <div className="relative h-[40vh] w-[90vw]">
+        <div className="relative h-[40vh] w-full border-b-8 border-white">
             <img 
                 src="/images/banner.jpg"
                 alt="Banner"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-50"
             />
-        </div> */}
+        </div>
 
-        {/* Horizontal Line behind Profile Picture (under construction)*/}
-        <div className="relative mb-4 max-w-full w-full flex justify-center">
-          {/* The horizontal line behind the profile image */}
-          <div className="absolute top-1/2 transform -translate-y-1/2 border-t-8 border-white w-[90vw]"></div>
-
-          {/* Display Profile Image */}
-          <div className="absolute z-10 bg-white w-48 h-48 rounded-full border-4 border-white flex items-center justify-center">
-            <img
-              src={user.profileImage}
-              alt="Profile Picture"
-              className="w-44 h-44 object-cover rounded-full"
-            />
-          </div>
+        {/* Display Profile Image */}
+        <div className="absolute top-[40vh] z-10 bg-white w-48 h-48 rounded-full border-4 border-white flex items-center justify-center">
+          <img
+            src={user.profileImage}
+            alt="Profile Picture"
+            className="w-44 h-44 object-cover rounded-full"
+          />
         </div>
 
         {/* Display User Details */}
-        <h1 className="text-3xl font-semibold text-gray-800 mb-2">
-          {user.username}
-        </h1>
-        <p className="text-xl text-gray-600 mb-2">
-          Home Country: {user.homeCountry}
-        </p>
-        <p className="text-xl text-gray-600 mb-4">Home City: {user.homeCity}</p>
+        <div className="relative top-[120px]">
+          <h1 className="text-3xl font-semibold text-gray-800 mb-2">
+            {user.username}
+          </h1>
+          <p className="text-xl text-gray-600 mb-2">
+            Home Country: {user.homeCountry}
+          </p>
+          <p className="text-xl text-gray-600 mb-4">Home City: {user.homeCity}</p>
+        </div>
       </div>
     </div>
   );
