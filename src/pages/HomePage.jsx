@@ -64,10 +64,6 @@ const HomePage = ({
         <MapComponent />
       </div>
 
-      {/* Display the TimeLine at the bottom of the page */}
-      {/* <div className="flex justify-center absolute bottom-1.5 -left-6 z-30 w-full">
-        <TimeLine />
-      </div> */}
     </div>
   );
 };
