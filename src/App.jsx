@@ -18,6 +18,7 @@ import HomePage from "./pages/HomePage";
 // Import HomePage component for the main/home route.
 import CreateAccountPage from "./pages/CreateAccountPage";
 import ProfilePage from "./pages/ProfilePage";
+import TimeLinePage from "./pages/TimeLinePage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -87,6 +88,9 @@ function App() {
           //make sure Homepage Button clicked, the clickProfile=false
         }
         //Goes to the Profile page from the button
+      />
+      <Route
+        path="/timeline"
       />
     </Routes>
   );
