@@ -43,20 +43,20 @@ const LoginPage = ({ setIsAuthenticated }) => {
   return (
     <>
       <div
-        className="place-content-center log-in-bg"
+        className="place-content-center log-in-bg min-w-[400px]"
         style={{
           minHeight: "100vh",
           textAlign: "center",
         }}
       >
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 min-w-[400px]">
           <h1 className="text-5xl text-sky-800">
-            Hello World travels with you
+            Hello World travels with you!
           </h1>
         </div>
 
         {/* Adds a border and darker shade of color around the input boxes fotr login */}
-        <div className=" rounded-lg p-2 mr-auto ml-auto w-1/3 log-in-contrast">
+        <div className="rounded-lg p-2 mr-auto ml-auto w-1/3 min-w-[300px] log-in-contrast">
           {/* Inputbox for username and password */}
           <div className="flex flex-col justify-center items-center gap-3">
             <div className="-mb-10">
@@ -65,11 +65,11 @@ const LoginPage = ({ setIsAuthenticated }) => {
               </div>
             </div>
 
-            <div className="flex gap-2 items-center justify-center">
+            <div className="flex gap-2 items-center justify-center ">
               {/* Icon for the username */}
               <FaRegUser />
               <input
-                className="p-1 rounded"
+                className="p-1 rounded w-[20vw]"
                 type="text"
                 placeholder="username"
                 value={username}
@@ -84,7 +84,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
               {/* Icon for the password */}
               <RiLockPasswordLine />
               <input
-                className="p-1 rounded"
+                className="p-1 rounded w-[20vw]"
                 type="password"
                 placeholder="password"
                 value={password}
@@ -98,7 +98,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
 
           {/* Login Button that checks if is authenticated, if is then it will jump to the Homepage*/}
           <button
-            className="bg-orange-400 rounded-full p-2 text-white hover:bg-orange-700 text-sm mt-4"
+            className="bg-orange-400 rounded-full p-2 text-white hover:bg-orange-700 text-sm mt-5 mb-4 w-[100px]"
             onClick={handleLogin}
           >
             Login
@@ -111,7 +111,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
           {/* When clicked, jumps to a create account page which is a form */}
           <Link
             to="/createAccount"
-            className="bg-orange-400 rounded-full p-1 text-white hover:bg-orange-700 text-sm"
+            className="bg-orange-400 rounded-full p-2 text-white hover:bg-orange-700 text-sm w-[150px]"
           >
             Create Account
           </Link>
@@ -119,7 +119,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
 
         {/* Third Party Login */}
         <div className="mt-6 flex justify-center items-center gap-2">
-          <p className="text-sm">Other Method:</p>
+          <p className="text-sm">Use Google to Sign In:</p>
           {/*pass setIsAuthenticated as parameter to GoogleLoginComponent */}
           <GoogleLoginComponent setIsAuthenticated={setIsAuthenticated} />
         </div>
