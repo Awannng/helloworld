@@ -78,7 +78,12 @@ function App() {
       />
       <Route
         path="/createAccount"
-        element={<CreateAccountPage />}
+        element={
+          <CreateAccountPage
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+          />
+        }
         //Goes to the createAccount page from the button
       />
       <Route

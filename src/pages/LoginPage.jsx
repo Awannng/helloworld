@@ -6,7 +6,6 @@ import { loginUser } from "../api/userService";
 
 import { RiLockPasswordLine } from "react-icons/ri";
 import GoogleLoginComponent from "../components/GoogleLogin";
-import Logo from "../components/Logo";
 
 const LoginPage = ({ setIsAuthenticated }) => {
   //useState for the username
