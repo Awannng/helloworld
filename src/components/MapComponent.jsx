@@ -11,7 +11,6 @@ import "leaflet/dist/leaflet.css";
 import CurrentPosition from "./CurrentPosition";
 import AddPin from "./AddPin";
 import SearchBar from "../components/SearchBar";
-import { OpenStreetMapProvider } from "leaflet-geosearch";
 
 const MapComponent = () => {
   //prop of the CurrentPosition that tracks your current location
@@ -20,7 +19,6 @@ const MapComponent = () => {
   //stores the locations that is being clicked on the map
   const [pins, setPins] = useState([]);
 
-  const prov = new OpenStreetMapProvider();
   return (
     <>
       {/* Set the map container to absolute positioning and make it fill the

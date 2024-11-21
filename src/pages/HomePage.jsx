@@ -8,6 +8,7 @@ import MapComponent from "../components/MapComponent";
 import TimeLine from "../components/TimeLine";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
 
 const HomePage = ({
   setIsAuthenticated,
@@ -49,10 +50,14 @@ const HomePage = ({
 
               <button
                 //When click, it will goes back to the login page
-                onClick={signOut}
+                onClick={async () => {
+                  await fetch(`${import.meta.env.VITE_API_URL}/login`);
+                  signOut();
+                }}
                 className="hover:bg-slate-100 rounded-md p-2"
+                type="button"
               >
-                <Link to="/login">Log Out</Link>
+                Log Out
               </button>
             </div>
           </div>

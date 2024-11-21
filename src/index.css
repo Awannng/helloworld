@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Background color of the login Page */
 .log-in-bg {
   background: radial-gradient(
     circle at 10% 20%,
@@ -12,6 +13,7 @@
   );
 }
 
-.log-in-contrast{
-    background-color:#ffebbb; ;
+/* The color of the login in portion*/
+.log-in-contrast {
+  background-color: #ffebbb;
 }
