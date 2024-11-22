@@ -26,23 +26,11 @@ function App() {
   const navigate = useNavigate();
   // Get the navigate function from react-router-dom to allow for programmatic navigation.
 
-  //when click the Profile in the logo of the homepage, set clickProfile=true and set as prop for the Homepage and ProfilePage component
-  const [clickProfile, setProfile] = useState(false);
-
   useEffect(() => {
     console.log("Authentication status:", isAuthenticated);
     // Log the current authentication status to the console for debugging.
     if (isAuthenticated) {
       console.log("Navigating to home page");
-
-      //if the Profile button is clicked, then we go to the Profile Page, else we go back to the Homepage
-      if (clickProfile) {
-        navigate("/profile");
-      } else {
-        // If isAuthenticated is true, log a message indicating redirection to the home page.
-        navigate("/");
-        // Navigate to the home page ("/") if the user is authenticated.
-      }
     }
   }, [isAuthenticated, navigate]);
   // useEffect runs whenever isAuthenticated or navigate changes.
@@ -62,7 +50,7 @@ function App() {
         element={
           //with Authenticated props, we can check if isAuthenticated= true or false for Log Out
           //with Profile props, we can check if the clickProfile=true for going to Profile page
-          <HomePage clickProfile={clickProfile} setProfile={setProfile} />
+          <HomePage />
         }
       />
 
@@ -78,10 +66,7 @@ function App() {
       />
       <Route
         path="/profile"
-        element={
-          <ProfilePage clickProfile={clickProfile} setProfile={setProfile} />
-          //make sure Homepage Button clicked, the clickProfile=false
-        }
+        element={<ProfilePage />}
         //Goes to the Profile page from the button
       />
       <Route path="/timeline" />

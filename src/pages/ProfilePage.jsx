@@ -1,13 +1,12 @@
-import React from "react"
+import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../components/Logo";
 
-const ProfilePage = ({clickProfile, setProfile}) => {
+const ProfilePage = () => {
   const navigate = useNavigate();
 
   // Navigate back to home page
   const goToHomePage = () => {
-    setProfile((e) => !clickProfile);
     navigate("/home");
   };
 
@@ -24,7 +23,7 @@ const ProfilePage = ({clickProfile, setProfile}) => {
       {/* Navigate back to Home Page */}
       <div className="absolute top-0 left-0">
         <button onClick={goToHomePage}>
-          <Logo/>
+          <Logo />
         </button>
       </div>
 
@@ -32,11 +31,11 @@ const ProfilePage = ({clickProfile, setProfile}) => {
       <div className="flex flex-col items-center justify-start bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[88vh] mt-20 overflow-hidden">
         {/* Profile Banner (under construction) */}
         <div className="relative h-[40vh] w-full border-b-8 border-white">
-            <img 
-                src="/images/banner.jpg"
-                alt="Banner"
-                className="w-full h-full object-cover opacity-50"
-            />
+          <img
+            src="/images/banner.jpg"
+            alt="Banner"
+            className="w-full h-full object-cover opacity-50"
+          />
         </div>
 
         {/* Display Profile Image */}
@@ -56,7 +55,9 @@ const ProfilePage = ({clickProfile, setProfile}) => {
           <p className="text-xl text-gray-600 mb-2">
             Home Country: {user.homeCountry}
           </p>
-          <p className="text-xl text-gray-600 mb-4">Home City: {user.homeCity}</p>
+          <p className="text-xl text-gray-600 mb-4">
+            Home City: {user.homeCity}
+          </p>
         </div>
       </div>
     </div>
