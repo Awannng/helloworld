@@ -1,5 +1,3 @@
-// src/pages/HomePage.jsx
-
 // Import React library for creating the React component
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,18 +8,12 @@ import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 
-const HomePage = ({
-  setIsAuthenticated,
-  isAuthenticated,
-  clickProfile,
-  setProfile,
-}) => {
+const HomePage = () => {
   const navigate = useNavigate();
 
-  //when click Log Out, set the isAuthenticated=false and go to the login page
+  //when click Log Out, go to the landing page
   const signOut = () => {
-    setIsAuthenticated(!isAuthenticated);
-    navigate("/login");
+    navigate("/");
   };
 
   //shows the dropdown menu
@@ -41,19 +33,15 @@ const HomePage = ({
           <div className="absolute top-10 left-5 translate-y-1/2">
             <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
               <button
-                // When click on the button, it changes the clickProfile to true which will goes back to the App.jsx to check
-                onClick={(e) => setProfile(!clickProfile)}
+                // When click on the button, it goes to the profile page
                 className="hover:bg-slate-100 rounded-md p-2"
               >
                 <Link to="/profile">Profile</Link>
               </button>
 
               <button
-                //When click, it will goes back to the login page
-                onClick={async () => {
-                  await fetch(`${import.meta.env.VITE_API_URL}/login`);
-                  signOut();
-                }}
+                //When click, it will goes back to the landing page
+                onClick={signOut}
                 className="hover:bg-slate-100 rounded-md p-2"
                 type="button"
               >
@@ -68,7 +56,6 @@ const HomePage = ({
         {/* Render the MapComponent to show the map */}
         <MapComponent />
       </div>
-
     </div>
   );
 };

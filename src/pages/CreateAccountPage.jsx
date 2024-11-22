@@ -126,7 +126,7 @@ const CreateAccountPage = ({ setIsAuthenticated, isAuthenticated }) => {
               </button>
 
               {/* goes back to the login page from createAccount Page */}
-              <Link to="/login">
+              <Link to="/">
                 <div className="text-blue-600">
                   <small>Back to Login</small>
                 </div>
