@@ -56,22 +56,13 @@ function App() {
         element={<LandingPage />}
         //the default page
       />
-      
+
       <Route
         path="/home"
         element={
-          isAuthenticated ? (
-            //with Authenticated props, we can check if isAuthenticated= true or false for Log Out
-            //with Profile props, we can check if the clickProfile=true for going to Profile page
-            <HomePage
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
-              clickProfile={clickProfile}
-              setProfile={setProfile}
-            />
-          ) : (
-            <Navigate to="/login" />
-          )
+          //with Authenticated props, we can check if isAuthenticated= true or false for Log Out
+          //with Profile props, we can check if the clickProfile=true for going to Profile page
+          <HomePage clickProfile={clickProfile} setProfile={setProfile} />
         }
       />
 

@@ -10,17 +10,11 @@ import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 
-const HomePage = ({
-  setIsAuthenticated,
-  isAuthenticated,
-  clickProfile,
-  setProfile,
-}) => {
+const HomePage = ({ clickProfile, setProfile }) => {
   const navigate = useNavigate();
 
   //when click Log Out, set the isAuthenticated=false and go to the login page
   const signOut = () => {
-    setIsAuthenticated(!isAuthenticated);
     navigate("/");
   };
 
@@ -50,10 +44,7 @@ const HomePage = ({
 
               <button
                 //When click, it will goes back to the login page
-                onClick={async () => {
-                  await fetch(`${import.meta.env.VITE_API_URL}/logout`);
-                  signOut();
-                }}
+                onClick={signOut}
                 className="hover:bg-slate-100 rounded-md p-2"
                 type="button"
               >
@@ -68,7 +59,6 @@ const HomePage = ({
         {/* Render the MapComponent to show the map */}
         <MapComponent />
       </div>
-
     </div>
   );
 };
