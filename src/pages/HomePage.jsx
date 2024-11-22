@@ -21,7 +21,7 @@ const HomePage = ({
   //when click Log Out, set the isAuthenticated=false and go to the login page
   const signOut = () => {
     setIsAuthenticated(!isAuthenticated);
-    navigate("/login");
+    navigate("/");
   };
 
   //shows the dropdown menu
@@ -51,7 +51,7 @@ const HomePage = ({
               <button
                 //When click, it will goes back to the login page
                 onClick={async () => {
-                  await fetch(`${import.meta.env.VITE_API_URL}/login`);
+                  await fetch(`${import.meta.env.VITE_API_URL}/logout`);
                   signOut();
                 }}
                 className="hover:bg-slate-100 rounded-md p-2"

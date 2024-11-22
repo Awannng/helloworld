@@ -12,8 +12,8 @@ import {
 // Import routing components from react-router-dom: BrowserRouter for routing context,
 // Routes and Route for defining paths, Navigate for redirection, and useNavigate for programmatic navigation.
 
-import LoginPage from "./pages/LoginPage";
-// Import LoginPage component for the login route.
+import LandingPage from "./pages/LandingPage";
+// Import LandingPage component for the login route.
 import HomePage from "./pages/HomePage";
 // Import HomePage component for the main/home route.
 import CreateAccountPage from "./pages/CreateAccountPage";
@@ -53,6 +53,12 @@ function App() {
       {/* Define all routes within the Routes component */}
       <Route
         path="/"
+        element={<LandingPage />}
+        //the default page
+      />
+      
+      <Route
+        path="/home"
         element={
           isAuthenticated ? (
             //with Authenticated props, we can check if isAuthenticated= true or false for Log Out
@@ -68,14 +74,7 @@ function App() {
           )
         }
       />
-      {/* If user is authenticated, render HomePage at the root path ("/");
-          otherwise, redirect to "/login". */}
-      <Route
-        path="/login"
-        element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
-        // Render LoginPage at '/login' path
-        // Pass 'setIsAuthenticated' to LoginPage so it can update the authentication state
-      />
+
       <Route
         path="/createAccount"
         element={
@@ -94,9 +93,7 @@ function App() {
         }
         //Goes to the Profile page from the button
       />
-      <Route
-        path="/timeline"
-      />
+      <Route path="/timeline" />
     </Routes>
   );
 }

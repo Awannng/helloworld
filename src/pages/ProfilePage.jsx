@@ -8,7 +8,7 @@ const ProfilePage = ({clickProfile, setProfile}) => {
   // Navigate back to home page
   const goToHomePage = () => {
     setProfile((e) => !clickProfile);
-    navigate("/");
+    navigate("/home");
   };
 
   // simulating user object
