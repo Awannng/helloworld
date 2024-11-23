@@ -133,33 +133,69 @@ import { RiTailwindCssFill } from "react-icons/ri";
 const LandingPage = () => {
   return (
     <>
-      {/* The Nav bar at the top of the page */}
-      <div className="min-h-full">
-        <div className="h-20 landing-bg w-full">
-          <nav className="flex justify-center items-center white-space">
-            <ul className="flex justify-center items-center gap-10 ">
+      <div className="min-h-full landing-bg ">
+        {/* The Nav bar at the top of the page */}
+        <nav className="landing-bg w-full">
+          <button
+            data-collapse-toggle="navbar-dropdown"
+            type="button"
+            class="p-2 w-10 h-10 text-sm rounded-lg md:hidden focus:outline-none "
+            aria-controls="navbar-dropdown"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+
+          <div className="flex justify-center items-center white-space md:h-20">
+            <div className="hidden md:block">
               <Logo />
+            </div>
+
+            <ul className="flex flex-col justify-center text-lg items-center gap-5 md:gap-10 md:flex-row">
               {/* able to go to the sections of the page when click on it */}
-              <a className="underline-animation" href="#about">
-                <li className="">About</li>
-              </a>
-              <a className="underline-animation" href="#feature">
-                <li>Features</li>
-              </a>
-              <a className="underline-animation" href="#techStack">
-                <li>Tech Stacks</li>
-              </a>
-              <a className="underline-animation" href="#aboutUs">
-                <li>About Us</li>
-              </a>
+              <li>
+                <a className="underline-animation block" href="#about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a className="underline-animation block" href="#feature">
+                  Features
+                </a>
+              </li>
+              <li>
+                <a className="underline-animation block" href="#techStack">
+                  Tech Stacks
+                </a>
+              </li>
+              <li>
+                <a className="underline-animation block" href="#aboutUs">
+                  About Us
+                </a>
+              </li>
 
               {/* SignUp button that can jumps to Clerk */}
-              <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700">
+              <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700 block mb-2">
                 Sign Up
               </button>
             </ul>
-          </nav>
-        </div>
+          </div>
+        </nav>
 
         <div className="landing-bg-2">
           {/* Hero Sectoin */}
@@ -169,8 +205,10 @@ const LandingPage = () => {
               src="/images/LandingHero.jpg"
               alt="a map with pins"
             />
-            <div className="absolute left-6 bottom-28 text-white p-2 rounded-md w-2/3">
-              <h1 className="mb-7 text-5xl">Hello World Travels with You</h1>
+            <div className="absolute left-6 bottom-10 md:bottom-28 text-white p-2 rounded-md w-2/3">
+              <h1 className="mb-7 text-2xl md:text-5xl">
+                Hello World Travels with You
+              </h1>
               <p className="w-2/3">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
                 numquam doloremque suscipit, animi voluptatum nemo sapiente illo
@@ -183,14 +221,14 @@ const LandingPage = () => {
           {/* Feature Section */}
           <div id="feature" className="white-space mb-20">
             <h1 className="text-4xl mb-4">Features</h1>
-            <div className="grid grid-cols-3 gap-10">
-              <div>
+            <div className="md:grid grid-cols-3 gap-10">
+              <div className="mb-5">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
                 tempora totam dolorem molestias ratione veniam temporibus hic
                 blanditiis voluptatem obcaecati cum libero, debitis neque?
                 Quaerat fuga delectus magni blanditiis! Accusamus!
               </div>
-              <div>
+              <div className="mb-5">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
                 tempora totam dolorem molestias ratione veniam temporibus hic
                 blanditiis voluptatem obcaecati cum libero, debitis neque?
@@ -220,40 +258,46 @@ const LandingPage = () => {
           </div>
 
           {/* About Us Section */}
-          <div id="aboutUs" className="white-space mb-20">
+          <div id="aboutUs" className="white-space mb-10">
             <h1 className="text-4xl mb-4">About Us</h1>
             <div className="flex flex-col">
-              <h1 className="text-2xl">Allison Lee</h1>
-              <div className="grid grid-cols-2 mb-4">
-                <img src="" alt="" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-                  vitae rem perspiciatis voluptatum fuga! Porro nesciunt
-                  eligendi, iste minus aperiam nemo, similique veniam
-                  laboriosam, doloremque inventore eaque earum officiis. In.
-                </p>
+              <div className="bg-white p-3 rounded-md mb-5">
+                <h1 className="text-2xl">Allison Lee</h1>
+                <div className="md:grid grid-cols-2 mb-4">
+                  <img src="" alt="" />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque vitae rem perspiciatis voluptatum fuga! Porro nesciunt
+                    eligendi, iste minus aperiam nemo, similique veniam
+                    laboriosam, doloremque inventore eaque earum officiis. In.
+                  </p>
+                </div>
               </div>
 
-              <h1 className="text-2xl">Jing Wang</h1>
-              <div className="grid grid-cols-2 mb-4">
-                <img src="" alt="" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-                  vitae rem perspiciatis voluptatum fuga! Porro nesciunt
-                  eligendi, iste minus aperiam nemo, similique veniam
-                  laboriosam, doloremque inventore eaque earum officiis. In.
-                </p>
+              <div className="bg-white p-3 rounded-md mb-5">
+                <h1 className="text-2xl">Jing Wang</h1>
+                <div className="md:grid grid-cols-2 mb-4">
+                  <img src="" alt="" />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque vitae rem perspiciatis voluptatum fuga! Porro nesciunt
+                    eligendi, iste minus aperiam nemo, similique veniam
+                    laboriosam, doloremque inventore eaque earum officiis. In.
+                  </p>
+                </div>
               </div>
 
-              <h1 className="text-2xl">Shika Lu</h1>
-              <div className="grid grid-cols-2">
-                <img src="" alt="" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-                  vitae rem perspiciatis voluptatum fuga! Porro nesciunt
-                  eligendi, iste minus aperiam nemo, similique veniam
-                  laboriosam, doloremque inventore eaque earum officiis. In.
-                </p>
+              <div className="bg-white p-3 rounded-md mb-5">
+                <h1 className="text-2xl">Shika Lu</h1>
+                <div className="md:grid grid-cols-2">
+                  <img src="" alt="" />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque vitae rem perspiciatis voluptatum fuga! Porro nesciunt
+                    eligendi, iste minus aperiam nemo, similique veniam
+                    laboriosam, doloremque inventore eaque earum officiis. In.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
