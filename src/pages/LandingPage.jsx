@@ -131,9 +131,11 @@ import { RiTailwindCssFill } from "react-icons/ri";
 // };
 
 const LandingPage = () => {
+  const [showNav, setShowNav] = useState(false);
+
   return (
     <>
-      <div className="min-h-full landing-bg ">
+      <div className="min-h-full">
         {/* The Nav bar at the top of the page */}
         <nav className="landing-bg w-full">
           <button
@@ -142,6 +144,7 @@ const LandingPage = () => {
             class="p-2 w-10 h-10 text-sm rounded-lg md:hidden focus:outline-none "
             aria-controls="navbar-dropdown"
             aria-expanded="false"
+            onClick={() => setShowNav(!showNav)}
           >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -163,37 +166,41 @@ const LandingPage = () => {
 
           <div className="flex justify-center items-center white-space md:h-20">
             <div className="hidden md:block">
+              {/* The logo only shows when the screen is at md size */}
               <Logo />
             </div>
+            {/* When click on the hamburger menu, it will shows the NavBar or not based on the useState */}
+            {/* The noShowNav only activiate when the screen is at md size */}
+            <div className={showNav ? "showNav" : "noShowNav"}>
+              <ul className="flex flex-col justify-center text-lg items-center gap-5 md:gap-10 md:flex-row">
+                {/* able to go to the sections of the page when click on it */}
+                <li>
+                  <a className="underline-animation block" href="#about">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a className="underline-animation block" href="#feature">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a className="underline-animation block" href="#techStack">
+                    Tech Stacks
+                  </a>
+                </li>
+                <li>
+                  <a className="underline-animation block" href="#aboutUs">
+                    About Us
+                  </a>
+                </li>
 
-            <ul className="flex flex-col justify-center text-lg items-center gap-5 md:gap-10 md:flex-row">
-              {/* able to go to the sections of the page when click on it */}
-              <li>
-                <a className="underline-animation block" href="#about">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className="underline-animation block" href="#feature">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a className="underline-animation block" href="#techStack">
-                  Tech Stacks
-                </a>
-              </li>
-              <li>
-                <a className="underline-animation block" href="#aboutUs">
-                  About Us
-                </a>
-              </li>
-
-              {/* SignUp button that can jumps to Clerk */}
-              <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700 block mb-2">
-                Sign Up
-              </button>
-            </ul>
+                {/* SignUp button that can jumps to Clerk */}
+                <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700 block mb-2">
+                  Sign Up
+                </button>
+              </ul>
+            </div>
           </div>
         </nav>
 

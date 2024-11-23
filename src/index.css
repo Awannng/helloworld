@@ -33,3 +33,15 @@
     rgb(255, 216, 194) 92.2%
   );
 }
+
+/* shows the dropdowm version of the nav bar */
+.showNav {
+  @apply flex flex-col justify-center text-lg items-center gap-5;
+}
+
+/* only not show the nav bar when is at md screen*/
+@media only screen and (max-width: 768px) {
+  .noShowNav {
+    display: none;
+  }
+}
