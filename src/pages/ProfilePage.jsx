@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../components/Logo";
 
-const ProfilePage = ({ menu, setMenu }) => {
+const ProfilePage = ({ menu, setMenu, signOut }) => {
   // simulating user object
   const user = {
     username: "user",
@@ -21,7 +21,7 @@ const ProfilePage = ({ menu, setMenu }) => {
 
         {/* When click the on the logo, it shows a dropdown menu */}
         {menu && (
-          <div className="absolute top-10 left-5 translate-y-1/2">
+          <div className="absolute top-5 left-5 translate-y-1/2">
             <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
               <button
                 // When click on the button, it goes to the home page
@@ -36,6 +36,15 @@ const ProfilePage = ({ menu, setMenu }) => {
                 type="button"
               >
                 Setting
+              </button>
+
+              <button
+                //When click, it will goes back to the landing page
+                onClick={signOut}
+                className="hover:bg-slate-100 rounded-md p-2"
+                type="button"
+              >
+                Log Out
               </button>
             </div>
           </div>
