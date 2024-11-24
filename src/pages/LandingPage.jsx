@@ -138,6 +138,7 @@ const LandingPage = () => {
       <div className="min-h-full">
         {/* The Nav bar at the top of the page */}
         <nav className="landing-bg w-full">
+          {/* the hamburger menu button */}
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
@@ -166,11 +167,11 @@ const LandingPage = () => {
 
           <div className="flex justify-center items-center white-space md:h-20">
             <div className="hidden md:block">
-              {/* The logo only shows when the screen is at md size */}
+              {/* The logo only shows when the screen is at md size or larger*/}
               <Logo />
             </div>
             {/* When click on the hamburger menu, it will shows the NavBar or not based on the useState */}
-            {/* The noShowNav only activiate when the screen is at md size */}
+            {/* The noShowNav only activiate when the screen is at md size or smaller*/}
             <div className={showNav ? "showNav" : "noShowNav"}>
               <ul className="flex flex-col justify-center text-lg items-center gap-5 md:gap-10 md:flex-row">
                 {/* able to go to the sections of the page when click on it */}

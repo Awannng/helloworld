@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../components/Logo";
+import SettingForm from "../components/SettingForm";
 
 const ProfilePage = ({ menu, setMenu, signOut }) => {
   // simulating user object
@@ -11,8 +12,11 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
     profileImage: "/images/profilePicture.png",
   };
 
+  //opens the setting form for user to enter info
+  const [openSetting, setOpenSetting] = useState(false);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 z-0">
+    <div className="flex flex-col items-center justify-center min-h-screen z-0">
       {/* Navigate back to Home Page and have setting button*/}
       <div className="absolute top-0 left-0 z-20">
         <button onClick={() => setMenu(!menu)}>
@@ -34,6 +38,7 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
                 //When click, it will open up a form for user to enter their info
                 className="hover:bg-slate-100 rounded-md p-2"
                 type="button"
+                onClick={() => setOpenSetting(!openSetting)}
               >
                 Setting
               </button>
@@ -51,6 +56,15 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
         )}
       </div>
 
+      {/* props for SettingForm close button */}
+      {openSetting && (
+        <SettingForm
+          openSetting={openSetting}
+          setOpenSetting={setOpenSetting}
+        />
+      )}
+
+      <div></div>
       {/* Profile Page Container */}
       <div className="flex flex-col items-center justify-start bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[88vh] mt-20 overflow-hidden">
         {/* Profile Banner (under construction) */}
