@@ -8,7 +8,7 @@ import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 
-const HomePage = () => {
+const HomePage = ({menu, setMenu}) => {
   const navigate = useNavigate();
 
   //when click Log Out, go to the landing page
@@ -16,8 +16,6 @@ const HomePage = () => {
     navigate("/");
   };
 
-  //shows the dropdown menu
-  const [menu, setMenu] = useState(false);
 
   return (
     // Set the container to relative positioning and make it fill the entire screen's height and width
