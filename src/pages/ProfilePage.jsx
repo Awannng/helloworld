@@ -1,15 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../components/Logo";
+import SettingForm from "../components/SettingForm";
 
-const ProfilePage = () => {
-  const navigate = useNavigate();
-
-  // Navigate back to home page
-  const goToHomePage = () => {
-    navigate("/home");
-  };
-
+const ProfilePage = ({ menu, setMenu, signOut }) => {
   // simulating user object
   const user = {
     username: "user",
@@ -18,15 +12,59 @@ const ProfilePage = () => {
     profileImage: "/images/profilePicture.png",
   };
 
+  //opens the setting form for user to enter info
+  const [openSetting, setOpenSetting] = useState(false);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 z-0">
-      {/* Navigate back to Home Page */}
-      <div className="absolute top-0 left-0">
-        <button onClick={goToHomePage}>
+    <div className="flex flex-col items-center justify-center min-h-screen z-0">
+      {/* Navigate back to Home Page and have setting button*/}
+      <div className="absolute top-0 left-0 z-20">
+        <button onClick={() => setMenu(!menu)}>
           <Logo />
         </button>
+
+        {/* When click the on the logo, it shows a dropdown menu */}
+        {menu && (
+          <div className="absolute top-5 left-5 translate-y-1/2">
+            <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
+              <button
+                // When click on the button, it goes to the home page
+                className="hover:bg-slate-100 rounded-md p-2"
+              >
+                <Link to="/home">Home</Link>
+              </button>
+
+              <button
+                //When click, it will open up a form for user to enter their info
+                className="hover:bg-slate-100 rounded-md p-2"
+                type="button"
+                onClick={() => setOpenSetting(!openSetting)}
+              >
+                Setting
+              </button>
+
+              <button
+                //When click, it will goes back to the landing page
+                onClick={signOut}
+                className="hover:bg-slate-100 rounded-md p-2"
+                type="button"
+              >
+                Log Out
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
+      {/* props for SettingForm close button */}
+      {openSetting && (
+        <SettingForm
+          openSetting={openSetting}
+          setOpenSetting={setOpenSetting}
+        />
+      )}
+
+      <div></div>
       {/* Profile Page Container */}
       <div className="flex flex-col items-center justify-start bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[88vh] mt-20 overflow-hidden">
         {/* Profile Banner (under construction) */}

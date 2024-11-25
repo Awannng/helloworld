@@ -79,7 +79,7 @@ const PopupForm = ({ pin, setPins }) => {
           <label htmlFor="startDate">Start Date</label>{" "}
           <input
             className="mb-1 border"
-            type="text"
+            type="date"
             value={startDate}
             name="startDate"
             id="startDate"
@@ -94,7 +94,7 @@ const PopupForm = ({ pin, setPins }) => {
           <label htmlFor="endDate">End Date</label>
           <input
             className="mb-1 border"
-            type="text"
+            type="date"
             value={endDate}
             name="endDate"
             id="endDate"

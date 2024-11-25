@@ -26,6 +26,14 @@ function App() {
   const navigate = useNavigate();
   // Get the navigate function from react-router-dom to allow for programmatic navigation.
 
+  //shows the dropdown menu for Homepage and the Profile page(prop)
+  const [menu, setMenu] = useState(false);
+
+  //when click Log Out, go to the landing page
+  const signOut = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     console.log("Authentication status:", isAuthenticated);
     // Log the current authentication status to the console for debugging.
@@ -50,7 +58,7 @@ function App() {
         element={
           //with Authenticated props, we can check if isAuthenticated= true or false for Log Out
           //with Profile props, we can check if the clickProfile=true for going to Profile page
-          <HomePage />
+          <HomePage menu={menu} setMenu={setMenu} signOut={signOut} />
         }
       />
 
@@ -66,7 +74,9 @@ function App() {
       />
       <Route
         path="/profile"
-        element={<ProfilePage />}
+        element={
+          <ProfilePage menu={menu} setMenu={setMenu} signOut={signOut} />
+        }
         //Goes to the Profile page from the button
       />
       <Route path="/timeline" />
