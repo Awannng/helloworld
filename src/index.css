@@ -39,7 +39,29 @@
   @apply flex flex-col justify-center text-lg items-center gap-5;
 }
 
-/* only not show the nav bar when is at md screen*/
+/* Styling for the setting box */
+/* makes the background darker when click on */
+.setting {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* style for the input form */
+.setting-box {
+  position: relative;
+  width: 40%;
+  background-color: white;
+  z-index: 40;
+}
+
+/* only not show the nav bar when is at md screen or smaller*/
 @media only screen and (max-width: 768px) {
   .noShowNav {
     display: none;

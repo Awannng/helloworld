@@ -56,15 +56,17 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
         )}
       </div>
 
-      {/* props for SettingForm close button */}
-      {openSetting && (
-        <SettingForm
-          openSetting={openSetting}
-          setOpenSetting={setOpenSetting}
-        />
-      )}
+      <div className="setting-box">
+        {/* props for SettingForm close button */}
+        {openSetting && (
+          <SettingForm
+            openSetting={openSetting}
+            setOpenSetting={setOpenSetting}
+          />
+        )}
+      </div>
 
-      <div></div>
+      
       {/* Profile Page Container */}
       <div className="flex flex-col items-center justify-start bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[88vh] mt-20 overflow-hidden">
         {/* Profile Banner (under construction) */}
