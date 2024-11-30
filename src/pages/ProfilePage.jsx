@@ -20,8 +20,8 @@ const ProfilePage = ({clickProfile, setProfile}) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 z-0">
-      {/* Navigate back to Home Page */}
+    <div className="min-w-[400px] min-h-[600px] bg-gray-100 flex items-center justify-center">
+      {/* Logo button - Navigate back to Home Page */}
       <div className="absolute top-0 left-0">
         <button onClick={goToHomePage}>
           <Logo/>
@@ -29,8 +29,9 @@ const ProfilePage = ({clickProfile, setProfile}) => {
       </div>
 
       {/* Profile Page Container */}
-      <div className="flex flex-col items-center justify-start bg-purple-100 rounded-lg shadow-xl w-[90vw] h-[88vh] mt-20 overflow-hidden">
-        {/* Profile Banner (under construction) */}
+      <div className="flex flex-col items-center bg-purple-100 rounded-lg w-[90vw] h-[88vh] mt-24 overflow-hidden">
+        
+        {/* Profile Banner*/}
         <div className="relative h-[40vh] w-full border-b-8 border-white">
             <img 
                 src="/images/banner.jpg"
@@ -58,6 +59,7 @@ const ProfilePage = ({clickProfile, setProfile}) => {
           </p>
           <p className="text-xl text-gray-600 mb-4">Home City: {user.homeCity}</p>
         </div>
+        
       </div>
     </div>
   );

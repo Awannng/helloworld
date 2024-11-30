@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import TimeLine from "../components/TimeLine"
+import React from "react";
+import MapTimeline from "../components/MapTimeline";
 
 const TimeLinePage = () => {
     return (
-        <div className="flex justify-center absolute bottom-1.5 -left-6 z-30 w-full">
-            <TimeLine />
+        <div>
+            <MapTimeline />
         </div>
     );
 };

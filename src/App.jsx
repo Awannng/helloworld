@@ -91,6 +91,7 @@ function App() {
       />
       <Route
         path="/timeline"
+        element={<TimeLinePage/>}
       />
     </Routes>
   );
