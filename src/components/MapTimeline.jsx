@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import ReactDOM from 'react-dom/client';
+import React from "react";
 import Timeline from 'react-image-timeline';
 import 'react-image-timeline/dist/timeline.css';
 
@@ -15,11 +14,7 @@ const events = [
 ];
 
 const MapTimeline = () => {
-  return (
-    <div>
-      <Timeline events={events} />
-    </div>
-  );
+  return <Timeline events={events} />
 };
 
 export default MapTimeline;
