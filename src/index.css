@@ -39,6 +39,11 @@
   @apply flex flex-col justify-center text-lg items-center gap-5;
 }
 
+/* make the Tech Stack margin top 0 so it will be on the same line as others */
+li:nth-child(3) {
+    margin-top: 0;
+}
+
 /* Styling for the setting box */
 /* makes the background darker when click on */
 .setting {
