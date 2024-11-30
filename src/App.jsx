@@ -79,7 +79,10 @@ function App() {
         }
         //Goes to the Profile page from the button
       />
-      <Route path="/timeline" />
+      <Route
+        path="/timeline"
+        element={<TimeLinePage/>}
+      />
     </Routes>
   );
 }

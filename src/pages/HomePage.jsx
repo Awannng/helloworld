@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
-import TimeLine from "../components/TimeLine";
+import TimeLine from "../components/MapTimeline";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
