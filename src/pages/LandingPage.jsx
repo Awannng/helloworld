@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 //import of the icons
@@ -9,8 +9,66 @@ import { SiPrisma } from "react-icons/si";
 import { RiSupabaseLine } from "react-icons/ri";
 import { RiTailwindCssFill } from "react-icons/ri";
 
+import {  useClerk, useUser  } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+
 const LandingPage = () => {
   const [showNav, setShowNav] = useState(false);
+  const { openSignIn } = useClerk(); // Clerk's sign-in modal method
+  const { user, isSignedIn } = useUser(); // Check if the user is signed in and get user information
+  const navigate = useNavigate(); // Used for navigation
+
+  const generateUniqueUsername = () => {
+    return `user_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+  };
+
+  // Define a function to sync user information to the backend
+  const syncUserToBackend = async () => {
+    if (isSignedIn) {
+      // Construct user data
+      const userData = {
+        authId: user.id,
+        email: user.primaryEmailAddress?.emailAddress || null,
+        username: user.username || generateUniqueUsername(),
+      };
+
+      try {
+        // Send user data to the backend
+        const response = await fetch("http://localhost:3000/save-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
+
+        if (response.ok) {
+          console.log("User data synced successfully to the backend.");
+        } else {
+          console.error("Failed to sync user data to the backend:", response.status);
+        }
+      } catch (error) {
+        console.error("Error syncing user data:", error);
+      }
+    }
+  };
+
+  const handleSignUp = () => {
+    if (isSignedIn) {
+      // If the user is already signed in, redirect to the Home Page
+      console.log("User is already signed in. Redirecting to /home...");
+      navigate("/home");
+    } else {
+      // If the user is not signed in, open the Clerk sign-in modal
+      console.log("User is not signed in. Opening Sign In modal...");
+      openSignIn(); // Open the sign-in modal
+    }
+  };
+  // Listen for changes in sign-in status and sync data to the backend after the user signs in
+  useEffect(() => {
+    syncUserToBackend();
+  }, [isSignedIn, user]);
+
 
   return (
     <>
@@ -73,7 +131,9 @@ const LandingPage = () => {
                 </li>
 
                 {/* SignUp button that can jumps to Clerk */}
-                <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700 block mb-2">
+                <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700 block mb-2"
+                 onClick={handleSignUp}
+                 >
                   Sign Up
                 </button>
               </ul>
