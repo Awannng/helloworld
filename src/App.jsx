@@ -29,7 +29,8 @@ function App() {
 
   useEffect(() => {
     if (isSignedIn === undefined) return; // Wait for Clerk to initialize
-    if (isSignedIn && window.location.pathname !== "/home") {
+    const allowedPaths = ["/home", "/profile", "/timeline"];
+    if (isSignedIn && !allowedPaths.includes(window.location.pathname)) {
       console.log("Navigating to home page...");
       navigate("/home");
     }

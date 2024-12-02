@@ -4,6 +4,7 @@ import Logo from "../components/Logo";
 import SettingForm from "../components/SettingForm";
 
 const ProfilePage = ({ menu, setMenu, signOut }) => {
+
   // simulating user object
   const user = {
     username: "user",
