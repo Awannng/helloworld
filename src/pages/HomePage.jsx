@@ -3,20 +3,16 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
-import TimeLine from "../components/MapTimeline";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
 const HomePage = ({ menu, setMenu , signOut}) => {
-  const navigate = useNavigate();
   return (
     // Set the container to relative positioning and make it fill the entire screen's height and width
     <div className=" h-screen w-screen">
       {/* Logo at the top-left corner */}
       <div className="absolute top-0 left-0 z-30">
         <button onClick={() => {
-          
-          console.log("Toggling menu, current state:", menu);
           setMenu(!menu)}}>
           <Logo />
         </button>

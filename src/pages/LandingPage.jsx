@@ -64,6 +64,7 @@ const LandingPage = () => {
       openSignIn(); // Open the sign-in modal
     }
   };
+  
   // Listen for changes in sign-in status and sync data to the backend after the user signs in
   useEffect(() => {
     syncUserToBackend();
@@ -134,7 +135,7 @@ const LandingPage = () => {
                 <button className="bg-orange-500 p-1 text-white rounded-md hover:bg-orange-700 block mb-2"
                  onClick={handleSignUp}
                  >
-                  Sign Up
+                  Sign In
                 </button>
               </ul>
             </div>
