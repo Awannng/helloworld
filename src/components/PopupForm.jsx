@@ -2,19 +2,15 @@ import React, { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { RiSaveLine } from "react-icons/ri";
 
-const PopupForm = ({ pin, setPins }) => {
-  //store the data of country
-  const [country, setCountry] = useState("");
-  //store the data of the city
-  const [city, setCity] = useState("");
-  //store the data of starting date for travel
-  const [startDate, setStartDate] = useState("");
-  //store the data of the ending date for travel
-  const [endDate, setEndDate] = useState("");
+const PopupForm = ({
+  handleSubmit,
+  handleChange,
+  pinData,
+  pin,
+  setPins,
 
-  const [notes, setNotes] = useState([]);
-
-  //Deletes the marker when click on the "delete" button, this filters the pin where the lat or lon are not equal
+}) => {
+  //Deletes the not-filled-pin when click on the "delete" button, this filters the pin where the lat or lon are not equal
   const removePin = (pin) => {
     setPins(
       (prevPins) =>
@@ -24,11 +20,15 @@ const PopupForm = ({ pin, setPins }) => {
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mt-1 flex justify-end gap-2">
           {/* Submit button to have the data send to the database */}
-          <button className=" text-blue-600 p-1" type="button">
-            <RiSaveLine className="size-4"/>
+          <button
+            className=" text-blue-600 p-1"
+            type="submit"
+           
+          >
+            <RiSaveLine className="size-4" />
           </button>
 
           {/* Delete pin button */}
@@ -36,26 +36,25 @@ const PopupForm = ({ pin, setPins }) => {
             className=" text-red-700"
             onClick={(e) => {
               e.stopPropagation(); // Prevent the map click from triggering
-              removePin(pin); //removes the pin
+              removePin(pin); // Delete the specific pin by ID
             }}
             type="button"
           >
             <RiDeleteBinLine className="size-4" />
           </button>
         </div>
-        
+
         <div className="flex flex-col">
           {/* Input box for country */}
           <label htmlFor="country">Country</label>
           <input
             className="mb-1 border"
             type="text"
-            value={country}
+            value={pinData.country}
             name="country"
             id="country"
-            onChange={(e) => {
-              setCountry(e.target.value);
-            }}
+            onChange={(e) => handleChange(e)}
+            required
           />
         </div>
 
@@ -65,12 +64,11 @@ const PopupForm = ({ pin, setPins }) => {
           <input
             className="mb-1 border"
             type="text"
-            value={city}
+            value={pinData.city}
             name="city"
             id="city"
-            onChange={(e) => {
-              setCity(e.target.value);
-            }}
+            onChange={(e) => handleChange(e)}
+            required
           />
         </div>
 
@@ -80,12 +78,11 @@ const PopupForm = ({ pin, setPins }) => {
           <input
             className="mb-1 border"
             type="date"
-            value={startDate}
+            value={pinData.startDate}
             name="startDate"
             id="startDate"
-            onChange={(e) => {
-              setStartDate(e.target.value);
-            }}
+            onChange={(e) => handleChange(e)}
+            required
           />
         </div>
 
@@ -95,12 +92,11 @@ const PopupForm = ({ pin, setPins }) => {
           <input
             className="mb-1 border"
             type="date"
-            value={endDate}
+            value={pinData.endDate}
             name="endDate"
             id="endDate"
-            onChange={(e) => {
-              setEndDate(e.target.value);
-            }}
+            onChange={(e) => handleChange(e)}
+            required
           />
         </div>
 
@@ -109,13 +105,11 @@ const PopupForm = ({ pin, setPins }) => {
           <textarea
             className="mb-1 border"
             type="text"
-            value={notes}
+            value={pinData.notes}
             name="notes"
             id="notes"
             rows="3"
-            onChange={(e) => {
-              setNotes(e.target.value);
-            }}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       </form>
