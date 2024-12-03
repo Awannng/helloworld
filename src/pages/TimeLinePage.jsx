@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MapTimeline from "../components/MapTimeline";
+import MapComponent from "../components/MapComponent";
 
 const TimeLinePage = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,15 +10,19 @@ const TimeLinePage = () => {
     };
   
     return (
-      <div>
+      <div style={{ minHeight: '500px' }} className="!min-h-1000px">
+        <div className="z-10 min-h-1000px">
+            <MapComponent/>
+        </div>
+        
         <button 
           onClick={toggleTimeline}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          className="absolute px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 z-50"
         >
           {isOpen ? "Hide Timeline" : "Show Timeline"}
         </button>
   
-        {isOpen && (
+        {/* {isOpen && (
           <div
             className={`fixed bg-purple-50 shadow-lg z-50 p-4 transition-all ${isOpen ? "animate-slideIn" : "animate-slideOut"}`}
           >
@@ -29,7 +34,7 @@ const TimeLinePage = () => {
               &times;
             </button>
           </div>
-        )}
+        )} */}
       </div>
     );
 };

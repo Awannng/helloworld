@@ -14,7 +14,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="min-h-full">
+      <div className="min-w-[1000px] h-full">
         {/* The Nav bar at the top of the page */}
         <nav className="landing-bg w-full">
           {/* the hamburger menu button */}
@@ -63,7 +63,7 @@ const LandingPage = () => {
                 </li>
                 <li>
                   <a className="underline-animation block z-30" href="#techStack">
-                    Tech Stacks
+                    Tech Stack
                   </a>
                 </li>
                 <li>
@@ -89,9 +89,9 @@ const LandingPage = () => {
               src="/images/LandingHero.jpg"
               alt="a map with pins"
             />
-            <div className="absolute left-6 bottom-10 md:bottom-28 text-white p-2 rounded-md w-2/3">
+            <div className="absolute left-6 bottom-10 md:bottom-28 text-white p-2 rounded-md min-w-[190px] w-2/3">
               <h1 className="mb-7 text-2xl md:text-5xl">
-                Hello World Travels with You
+                Hello World Travels with You!
               </h1>
               <p className="w-2/3">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
@@ -127,9 +127,9 @@ const LandingPage = () => {
             </div>
           </div>
 
-          {/* Tech Stacks Section */}
+          {/* Tech Stack Section */}
           <div id="techStack" className="white-space mb-20">
-            <h1 className="text-4xl mb-4">Tech Stacks</h1>
+            <h1 className="text-4xl mb-4">Tech Stack</h1>
             {/* Icons of the platforms we used */}
             <div className="flex gap-10">
               <FaReact className="size-24" />

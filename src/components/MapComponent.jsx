@@ -23,7 +23,7 @@ const MapComponent = () => {
     <>
       {/* Set the map container to absolute positioning and make it fill the
       entire parent container */}
-      <div className="w-full h-screen">
+      <div className="w-[90vw] h-[90vh] min-h-1000px">
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer
@@ -41,7 +41,7 @@ const MapComponent = () => {
           zoomAnimation={true} // Smooth zooming
           fadeAnimation={true} // Smooth fading between tiles
           zoomControl={false}
-          className="h-full w-full z-10"
+          className="h-screen w-full z-10"
         >
           {/* Default OpenStreetMap, but zoomed out to limit road visibility */}
           <TileLayer
