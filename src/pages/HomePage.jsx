@@ -21,6 +21,10 @@ const HomePage = ({ menu, setMenu , signOut}) => {
           <Logo />
         </button>
 
+        <button>
+          <Link to="/timeline">Timeline</Link>
+        </button>
+
         {/* When click the on the logo, it shows a dropdown menu */}
         {menu && (
           <div className="absolute top-10 left-5 translate-y-1/2">

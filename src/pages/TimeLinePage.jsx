@@ -11,9 +11,7 @@ const TimeLinePage = () => {
   
     return (
       <div style={{ minHeight: '500px' }} className="!min-h-1000px">
-        <div className="z-10 min-h-1000px">
-            <MapComponent/>
-        </div>
+
         
         <button 
           onClick={toggleTimeline}
@@ -22,7 +20,7 @@ const TimeLinePage = () => {
           {isOpen ? "Hide Timeline" : "Show Timeline"}
         </button>
   
-        {/* {isOpen && (
+        {isOpen && (
           <div
             className={`fixed bg-purple-50 shadow-lg z-50 p-4 transition-all ${isOpen ? "animate-slideIn" : "animate-slideOut"}`}
           >
@@ -34,7 +32,7 @@ const TimeLinePage = () => {
               &times;
             </button>
           </div>
-        )} */}
+        )}
       </div>
     );
 };
