@@ -72,6 +72,8 @@ const AddPin = ({ pins, setPins }) => {
           country: "",
           city: "",
           startDate: "",
+          lat: "",
+          lng: "",
           endDate: "",
           notes: "",
         }); // reset form
@@ -92,7 +94,7 @@ const AddPin = ({ pins, setPins }) => {
       });
 
       if (response.ok) {
-        fetchPins(); // refetch the pins after deletion
+        await fetchPins(); // refetch the pins after deletion
       } else {
         console.error("Error deleting pin:", response.statusText);
       }
@@ -141,7 +143,6 @@ const AddPin = ({ pins, setPins }) => {
                 <button
                   className=" text-red-700"
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent the map click from triggering
                     handleDelete(pin); // Delete the specific pin by id
                   }}
                   type="button"

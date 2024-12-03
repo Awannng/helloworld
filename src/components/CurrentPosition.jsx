@@ -12,8 +12,6 @@ const CurrentPosition = ({ currentPosition, setCurrentPosition }) => {
       setCurrentPosition(e.latlng);
       //shifts the map to where the pin is
       map.flyTo(e.latlng, map.getZoom());
-      console.log("located current position");
-      console.log(e)
     });
   }, [map]);
 
