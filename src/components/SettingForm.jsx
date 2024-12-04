@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoMdClose } from "react-icons/io";
 
-const SettingForm = ({ openSetting, setOpenSetting }) => {
-  const [homeCountry, setHomeCountry] = useState("");
-  const [homeCity, setHomeCity] = useState("");
-
+const SettingForm = ({
+  openSetting,
+  setOpenSetting,
+  userInfo,
+  handleSubmit,
+  handleChange,
+}) => {
   return (
     <>
       <div className="setting">
@@ -18,28 +21,33 @@ const SettingForm = ({ openSetting, setOpenSetting }) => {
           </button>
 
           {/* The input form for User info */}
-          <form className="flex flex-col">
-            <label htmlFor="country">Country</label>
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <label htmlFor="homeCountry">Country</label>
             <input
               className="border mb-7"
               type="text"
-              value={homeCountry}
-              name="country"
-              onChange={(e) => setHomeCountry(e.target.value)}
+              value={userInfo.homeCountry || ""}
+              name="homeCountry"
+              id="homeCountry"
+              onChange={handleChange}
             />
 
-            <label htmlFor="city">City</label>
+            <label htmlFor="homeCity">City</label>
             <input
               className="border mb-7"
               type="text"
-              value={homeCity}
-              name="city"
-              onChange={(e) => setHomeCity(e.target.value)}
+              value={userInfo.homeCity || ""}
+              name="homeCity"
+              id="homeCity"
+              onChange={handleChange}
             />
 
             <div className="flex justify-center">
               {/* Save button */}
-              <button className="bg-orange-400 hover:bg-orange-700 p-1 text-white rounded-md">
+              <button
+                className="bg-orange-400 hover:bg-orange-700 p-1 text-white rounded-md"
+                type="submit"
+              >
                 Save
               </button>
             </div>

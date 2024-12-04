@@ -142,7 +142,7 @@ const AddPin = ({ pins, setPins }) => {
                 {/* Delete pin button */}
                 <button
                   className=" text-red-700"
-                  onClick={(e) => {
+                  onClick={() => {
                     handleDelete(pin); // Delete the specific pin by id
                   }}
                   type="button"
