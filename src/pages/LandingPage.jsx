@@ -108,7 +108,7 @@ const LandingPage = () => {
             {/* When click on the hamburger menu, it will shows the NavBar or not based on the useState */}
             {/* The noShowNav only activiate when the screen is at md size or smaller*/}
             <div className={showNav ? "showNav" : "noShowNav"}>
-              <ul className="flex flex-col justify-center text-lg items-center gap-5 md:gap-10 md:flex-row">
+              <ul className="flex flex-col justify-center text-2xl items-center gap-5 md:gap-10 md:flex-row">
                 {/* able to go to the sections of the page when click on it */}
                 <li>
                   <a className="underline-animation block" href="#about">
@@ -122,7 +122,7 @@ const LandingPage = () => {
                 </li>
                 <li>
                   <a className="underline-animation block z-30" href="#techStack">
-                    Tech Stacks
+                    Tech Stack
                   </a>
                 </li>
                 <li>
@@ -151,46 +151,51 @@ const LandingPage = () => {
               alt="a map with pins"
             />
             <div className="absolute left-6 bottom-10 md:bottom-28 text-white p-2 rounded-md w-2/3">
-              <h1 className="mb-7 text-2xl md:text-5xl">
-                Hello World Travels with You
+              <h1 className="mb-7 md:text-6xl">
+                Hello World Travels with You!
               </h1>
-              <p className="w-2/3">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
-                numquam doloremque suscipit, animi voluptatum nemo sapiente illo
-                laboriosam natus id sit saepe consectetur vitae quo obcaecati
-                aliquid earum qui commodi?
+              <p className=" text-3xl shadow-lg">
+                Welcome to HelloWorld, the digital travel companion designed to capture and 
+                relive your adventures in a user-friendly platform. HelloWorld lets you visualize 
+                your travels on an interactive map, whether you're a globetrotter, memory keeper, 
+                or world explorer. 
               </p>
+              {/* SignUp button that can jumps to Clerk */}
+              <button className="bg-orange-500 pl-16 pr-16 p-4 text-2xl text-white rounded-lg hover:bg-orange-700 block ml-60 mt-4"
+                onClick={handleSignUp}
+                >
+                Sign In
+              </button>
             </div>
+            
+            
           </div>
 
           {/* Feature Section */}
           <div id="feature" className="white-space mb-20">
-            <h1 className="text-4xl mb-4">Features</h1>
+            <h1 className="text-5xl mb-4">Features</h1>
             <div className="md:grid grid-cols-3 gap-10">
-              <div className="mb-5">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
-                tempora totam dolorem molestias ratione veniam temporibus hic
-                blanditiis voluptatem obcaecati cum libero, debitis neque?
-                Quaerat fuga delectus magni blanditiis! Accusamus!
+              <div className="text-2xl mb-5">
+                <strong>Map your memories</strong> - See the world as you've experienced it. 
+                Pin every destination, mark your favorite spots, and watch 
+                as your map grows with every adventure.
               </div>
-              <div className="mb-5">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
-                tempora totam dolorem molestias ratione veniam temporibus hic
-                blanditiis voluptatem obcaecati cum libero, debitis neque?
-                Quaerat fuga delectus magni blanditiis! Accusamus!
+              <div className="text-2xl mb-5">
+                <strong>Relive Moments with a Timeline</strong> - Track unforgettable events 
+                and relive those moments chronologically. Add notes, whether 
+                a quick thought or a detailed story. 
               </div>
-              <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
-                tempora totam dolorem molestias ratione veniam temporibus hic
-                blanditiis voluptatem obcaecati cum libero, debitis neque?
-                Quaerat fuga delectus magni blanditiis! Accusamus!
+              <div className="text-2xl">
+                <strong>Share or keep it private</strong> - Share adventures with friends and 
+                family or keep them just for yourself. 
+
               </div>
             </div>
           </div>
 
-          {/* Tech Stacks Section */}
+          {/* Tech Stack Section */}
           <div id="techStack" className="white-space mb-20">
-            <h1 className="text-4xl mb-4">Tech Stacks</h1>
+            <h1 className="text-5xl mb-4">Tech Stack</h1>
             {/* Icons of the platforms we used */}
             <div className="flex gap-10">
               <FaReact className="size-24" />
@@ -204,11 +209,25 @@ const LandingPage = () => {
 
           {/* About Us Section */}
           <div id="aboutUs" className="white-space mb-10">
-            <h1 className="text-4xl mb-4">About Us</h1>
+            <h1 className="text-5xl mb-4">About Us</h1>
             <div className="flex flex-col">
               <div className="bg-white p-3 rounded-md mb-5">
-                <h1 className="text-2xl">Allison Lee</h1>
-                <div className="md:grid grid-cols-2 mb-4">
+                <h1 className="text-3xl">Allison Lee</h1>
+                <div className="md:grid grid-cols-2 mb-4 text-2xl">
+                  <img src="" alt="" />
+                  <p>
+                    I am a junior studying computer science at Hunter College. My technical 
+                    journey has allowed me to explore many different facets of software 
+                    development, including Web Development, Artificial Intelligence, and 
+                    Robotics. This is my first web development project and I learned a lot 
+                    about web development tools and frameworks.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white p-3 rounded-md mb-5">
+                <h1 className="text-3xl">Jing Wang</h1>
+                <div className="md:grid grid-cols-2 mb-4 text-2xl">
                   <img src="" alt="" />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -220,21 +239,8 @@ const LandingPage = () => {
               </div>
 
               <div className="bg-white p-3 rounded-md mb-5">
-                <h1 className="text-2xl">Jing Wang</h1>
-                <div className="md:grid grid-cols-2 mb-4">
-                  <img src="" alt="" />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque vitae rem perspiciatis voluptatum fuga! Porro nesciunt
-                    eligendi, iste minus aperiam nemo, similique veniam
-                    laboriosam, doloremque inventore eaque earum officiis. In.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-3 rounded-md mb-5">
-                <h1 className="text-2xl">Shika Lu</h1>
-                <div className="md:grid grid-cols-2">
+                <h1 className="text-3xl">Shika Lu</h1>
+                <div className="md:grid grid-cols-2 text-2xl">
                   <img src="" alt="" />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
