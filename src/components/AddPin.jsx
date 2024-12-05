@@ -13,7 +13,7 @@ const AddPin = ({ pins, setPins }) => {
     const fetchUser = async (user) => {
       try {
         const response = await fetch(
-          `http://localhost:3000/user/${user.username}`
+          `http://localhost:3000/user/${user.id}`
         );
         const data = await response.json();
         setUser1(data);

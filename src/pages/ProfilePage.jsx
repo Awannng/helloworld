@@ -22,10 +22,11 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
     const fetchUser = async (user) => {
       try {
         const response = await fetch(
-          `http://localhost:3000/user/${user.username}`
+          `http://localhost:3000/user/${user.id}`
         );
         const data = await response.json();
         setUserInfo(data);
+        console.log(data)
       } catch (error) {
         console.error("Error fetching users's info:", error);
       }
