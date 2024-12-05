@@ -12,9 +12,7 @@ const AddPin = ({ pins, setPins }) => {
   useEffect(() => {
     const fetchUser = async (user) => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/user/${user.id}`
-        );
+        const response = await fetch(`http://localhost:3000/user/${user.id}`);
         const data = await response.json();
         setUser1(data);
       } catch (error) {
@@ -27,6 +25,8 @@ const AddPin = ({ pins, setPins }) => {
 
   //display the saved pins
   const [showPins, setShowPins] = useState([]);
+  //when click on save, the Popup form and the pin won't apear again
+  const [click, setClick] = useState(true);
   // Form datas for saving pins
   const [pinData, setPinData] = useState({
     country: "",
@@ -47,6 +47,7 @@ const AddPin = ({ pins, setPins }) => {
       // add the location into pins plus any previous added pins
       setPinData((prevPin) => ({ ...prevPin, lat, lng }));
       setPins((prevPins) => [...prevPins, { lat, lng }]);
+      setClick(true); //show the Popup form and the pin when click on the map
     },
   });
 
@@ -99,6 +100,7 @@ const AddPin = ({ pins, setPins }) => {
           userId: userId,
         }); // reset form
         fetchPins(); // refetch the pins
+        setClick((prevClick) => !prevClick);
       } else {
         console.error("Error creating pin:", response.statusText);
       }
@@ -131,8 +133,9 @@ const AddPin = ({ pins, setPins }) => {
 
   return (
     <>
-      {/* display the no-filled-pins and the form on the map */}
-      {pins.length > 0 &&
+      {/* only display the no-filled-pins and the form on the map when click=true */}
+      {click &&
+        pins.length > 0 &&
         pins.map((pin, idx) => (
           <Marker
             key={idx}
