@@ -94,14 +94,6 @@ const CreateAccountPage = ({ setIsAuthenticated, isAuthenticated }) => {
 
             {/* Input box for password */}
             <div className="flex flex-col">
-              {/* Show the requirment of the password in gray */}
-              {/* <p className="text-sm text-slate-500">
-                Contains digits from 1 to 9 <br />
-                One lowercase letter <br />
-                One uppercase letter <br />
-                One special character <br />
-                No space, 8-16 characters long
-              </p> */}
               <label htmlFor="password">Password</label>
               <input
                 className="mb-1 border"

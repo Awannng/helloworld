@@ -1,20 +1,72 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
 import SettingForm from "../components/SettingForm";
+import { useUser } from "@clerk/clerk-react";
 
 const ProfilePage = ({ menu, setMenu, signOut }) => {
+  const { user } = useUser(); // get the user's username from clerk
 
-  // simulating user object
-  const user = {
-    username: "user",
-    homeCountry: "United States",
-    homeCity: "New York",
-    profileImage: "/images/profilePicture.png",
-  };
+  //storing user's info
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    homeCountry: "",
+    homeCity: "",
+  });
 
   //opens the setting form for user to enter info
   const [openSetting, setOpenSetting] = useState(false);
+
+  //fetch the user's data based on the username, pass user as param
+  useEffect(() => {
+    const fetchUser = async (user) => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/user/${user.id}`
+        );
+        const data = await response.json();
+        setUserInfo(data);
+      } catch (error) {
+        console.error("Error fetching users's info:", error);
+      }
+    };
+    fetchUser(user);
+  }, []);
+
+  // Handle form changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission for user info
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        `http://localhost:3000/saveInfo/${user.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        }
+      );
+
+      if (response.ok) {
+        const updatedUser = await response.json();
+        setUserInfo(updatedUser);
+      } else {
+        console.error("Error sending info:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error sending info:", error);
+    }
+  };
 
   return (
     <>
@@ -66,6 +118,9 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
             <SettingForm
               openSetting={openSetting}
               setOpenSetting={setOpenSetting}
+              userInfo={userInfo}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
             />
           )}
         </div>
@@ -82,7 +137,7 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
         {/* Display Profile Image */}
         <div className="absolute top-[25vh] z-10 bg-white w-48 h-48 rounded-full border-4 border-white flex items-center justify-center">
           <img
-            src={user.profileImage}
+            src="/images/profilePicture.png"
             alt="Profile Picture"
             className="w-44 h-44 object-cover rounded-full"
           />
@@ -91,16 +146,15 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
         {/* Display User Details */}
         <div className="relative top-[120px] flex flex-col items-center">
           <h1 className="text-3xl font-semibold text-gray-800 mb-2">
-            {user.username}
+            {userInfo.username}
           </h1>
           <p className="text-xl text-gray-600 mb-2">
-            Home Country: {user.homeCountry}
+            Home Country: {userInfo.homeCountry || ""}
           </p>
           <p className="text-xl text-gray-600 mb-4">
-            Home City: {user.homeCity}
+            Home City: {userInfo.homeCity || ""}
           </p>
         </div>
-        
       </div>
     </>
   );
