@@ -7,8 +7,9 @@ import { useUser } from "@clerk/clerk-react";
 const ProfilePage = ({ menu, setMenu, signOut }) => {
   const { user } = useUser(); // get the user's username from clerk
 
-  //sending user's info
+  //storing user's info
   const [userInfo, setUserInfo] = useState({
+    username: "",
     homeCountry: "",
     homeCity: "",
   });
@@ -46,7 +47,7 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/saveInfo/${user.username}`,
+        `http://localhost:3000/saveInfo/${user.id}`,
         {
           method: "PUT",
           headers: {

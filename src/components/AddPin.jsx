@@ -3,8 +3,30 @@ import { useMapEvents, Marker, Popup } from "react-leaflet";
 import PopupForm from "./PopupForm";
 
 import { RiDeleteBinLine } from "react-icons/ri";
+import { useUser } from "@clerk/clerk-react";
 
 const AddPin = ({ pins, setPins }) => {
+  const { user } = useUser(); // get the user's username from clerk
+  const [user1, setUser1] = useState([]); //to get userId for fetchPin and POST pins (in URL)
+  //fetch the user's data based on the username, pass user as param
+  useEffect(() => {
+    const fetchUser = async (user) => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/user/${user.username}`
+        );
+        const data = await response.json();
+        setUser1(data);
+      } catch (error) {
+        console.error("Error fetching users's info:", error);
+      }
+    };
+    fetchUser(user);
+  }, []);
+
+  //userId for fetching and submit
+  const userId = user1.userId;
+
   //display the saved pins
   const [showPins, setShowPins] = useState([]);
   // Form datas for saving pins
@@ -16,6 +38,7 @@ const AddPin = ({ pins, setPins }) => {
     lng: "",
     endDate: "",
     notes: "",
+    userId: userId, //connect the pin to user
   });
 
   //uses click function to enable users to click on the map to get the location(lat and lng)
@@ -41,10 +64,9 @@ const AddPin = ({ pins, setPins }) => {
   //fectch the UserPin data from the backend
   const fetchPins = async () => {
     try {
-      const response = await fetch("http://localhost:3000/pins");
+      const response = await fetch(`http://localhost:3000/pins/${userId}`);
       const data = await response.json();
       setShowPins(data);
-      console.log(data);
     } catch (error) {
       console.error("Error fetching pins:", error);
     }
@@ -53,13 +75,13 @@ const AddPin = ({ pins, setPins }) => {
   //to call the fetchPins
   useEffect(() => {
     fetchPins();
-  }, [setPins]);
+  }, [showPins]);
 
   // Handle form submission for creating a new pin
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/savePin", {
+      const response = await fetch(`http://localhost:3000/savePin/${userId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,6 +98,7 @@ const AddPin = ({ pins, setPins }) => {
           lng: "",
           endDate: "",
           notes: "",
+          userId: userId,
         }); // reset form
         fetchPins(); // refetch the pins
       } else {
@@ -94,7 +117,7 @@ const AddPin = ({ pins, setPins }) => {
       });
 
       if (response.ok) {
-        await fetchPins(); // refetch the pins after deletion
+        fetchPins(); // refetch the pins after deletion
       } else {
         console.error("Error deleting pin:", response.statusText);
       }

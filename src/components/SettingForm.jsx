@@ -22,6 +22,16 @@ const SettingForm = ({
 
           {/* The input form for User info */}
           <form onSubmit={handleSubmit} className="flex flex-col">
+            <label htmlFor="username">Username</label>
+            <input
+              className="border mb-7"
+              type="text"
+              value={userInfo.username || ""}
+              name="username"
+              id="username"
+              onChange={handleChange}
+            />
+            
             <label htmlFor="homeCountry">Country</label>
             <input
               className="border mb-7"

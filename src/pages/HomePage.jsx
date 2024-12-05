@@ -1,6 +1,5 @@
 // Import React library for creating the React component
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
 import Logo from "../components/Logo";
