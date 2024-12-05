@@ -23,8 +23,6 @@ const AddPin = ({ pins, setPins }) => {
     };
     fetchUser(user);
   }, []);
-
-  //userId for fetching and submit
   const userId = user1.userId;
 
   //display the saved pins
@@ -38,7 +36,7 @@ const AddPin = ({ pins, setPins }) => {
     lng: "",
     endDate: "",
     notes: "",
-    userId: userId, //connect the pin to user
+    userId: userId,
   });
 
   //uses click function to enable users to click on the map to get the location(lat and lng)
