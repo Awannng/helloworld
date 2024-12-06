@@ -76,7 +76,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="min-w-[1000px] h-full">
+      <div className="min-h-full">
         {/* The Nav bar at the top of the page */}
         <nav className="landing-bg w-full">
           {/* the hamburger menu button */}
@@ -124,11 +124,7 @@ const LandingPage = () => {
                   </a>
                 </li>
                 <li>
-<<<<<<< HEAD
-                  <a className="underline-animation block z-30" href="#techStack">
-=======
                   <a className="underline-animation block" href="#techStack">
->>>>>>> c8063964c53b257462fee26afbec879587cdc69e
                     Tech Stack
                   </a>
                 </li>
@@ -158,18 +154,6 @@ const LandingPage = () => {
               src="/images/LandingHero.jpg"
               alt="a map with pins"
             />
-<<<<<<< HEAD
-            <div className="absolute left-6 bottom-10 md:bottom-28 text-white p-2 rounded-md min-w-[190px] w-2/3">
-              <h1 className="mb-7 text-2xl md:text-5xl">
-                Hello World Travels with You!
-              </h1>
-              <p className="w-2/3">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
-                numquam doloremque suscipit, animi voluptatum nemo sapiente illo
-                laboriosam natus id sit saepe consectetur vitae quo obcaecati
-                aliquid earum qui commodi?
-              </p>
-=======
 
             <div className="absolute left-6 bottom-3 md:bottom-28 text-black p-2 rounded-md w-10/12 bg-white bg-opacity-85">
               <div>
@@ -196,7 +180,6 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
->>>>>>> c8063964c53b257462fee26afbec879587cdc69e
             </div>
           </div>
 
@@ -272,7 +255,7 @@ const LandingPage = () => {
 
               <div className="bg-white p-3 rounded-md mb-5">
                 <h1 className="text-3xl mb-2">Jing Wang</h1>
-                <div className="md:grid grid-cols-2 mb-4 text-1xl place-items-center h">
+                <div className="md:grid grid-cols-2 mb-4 text-1xl place-items-center">
                   <img
                     src="../images/jw.jpg"
                     alt="Jing Wang"
