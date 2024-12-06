@@ -23,7 +23,7 @@ const MapComponent = () => {
     <>
       {/* Set the map container to absolute positioning and make it fill the
       entire parent container */}
-      <div className="w-[90vw] h-[90vh] min-h-1000px">
+      <div className="w-full h-full">
         {/* Create a MapContainer component, set the map's center coordinates and zoom level,
           and make it fill the entire height and width of the container */}
         <MapContainer

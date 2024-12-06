@@ -240,8 +240,12 @@ const LandingPage = () => {
             <div className="flex flex-col">
               <div className="bg-white p-3 rounded-md mb-5">
                 <h1 className="text-3xl mb-2">Allison Lee</h1>
-                <div className="md:grid grid-cols-2 mb-4 text-1xl">
-                  <img src="" alt="" />
+                <div className="md:grid grid-cols-2 mb-4 text-1xl place-items-center">
+                  <img
+                    src="../images/alee.jpg"
+                    alt="Allison Lee"
+                    className=" h-60 w-60 rounded-full mb-3"
+                  />
                   <p>
                     I am a junior studying computer science at Hunter College.
                     My technical journey has allowed me to explore many
@@ -259,7 +263,7 @@ const LandingPage = () => {
                   <img
                     src="../images/jw.jpg"
                     alt="Jing Wang"
-                    className=" h-60 w-60 rounded-full"
+                    className=" h-60 w-60 rounded-full mb-3"
                   />
 
                   <p>
@@ -276,8 +280,8 @@ const LandingPage = () => {
 
               <div className="bg-white p-3 rounded-md mb-5">
                 <h1 className="text-3xl mb-2">Shika Lu</h1>
-                <div className="md:grid grid-cols-2 text-1xl">
-                  <img src="" alt="" />
+                <div className="md:grid grid-cols-2 text-1xl place-items-center">
+                  <img src="" alt="" className=" h-60 w-60 rounded-full mb-3" />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Eaque vitae rem perspiciatis voluptatum fuga! Porro nesciunt

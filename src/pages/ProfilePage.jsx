@@ -21,9 +21,7 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
   useEffect(() => {
     const fetchUser = async (user) => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/user/${user.id}`
-        );
+        const response = await fetch(`http://localhost:3000/user/${user.id}`);
         const data = await response.json();
         setUserInfo(data);
       } catch (error) {
@@ -80,7 +78,7 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
 
           {/* When click the on the logo, it shows a dropdown menu */}
           {menu && (
-            <div className="absolute top-5 left-5 translate-y-1/2">
+            <div className="absolute top-0 left-5 translate-y-1/2">
               <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
                 <button
                   // When click on the button, it goes to the home page
@@ -96,6 +94,14 @@ const ProfilePage = ({ menu, setMenu, signOut }) => {
                   onClick={() => setOpenSetting(!openSetting)}
                 >
                   Setting
+                </button>
+
+                <button
+                  //When click, it will goes back to the timeline page
+                  className="hover:bg-slate-100 rounded-md p-2"
+                  type="button"
+                >
+                  <Link to="/timeline">Timeline</Link>
                 </button>
 
                 <button
