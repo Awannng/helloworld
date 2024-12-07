@@ -158,6 +158,8 @@ const AddPin = ({ pins, setPins }) => {
 
       {/* Returns the saved pins */}
       {showPins.map((pin, idx) => {
+        const dateStart = new Date(pin.startDate).toISOString().slice(2, 10); // Get YYYY-MM-DD
+        const dateEnd = new Date(pin.endDate).toISOString().slice(2, 10); // Get YYYY-MM-DD
         return (
           <Marker key={idx} position={[pin.lat, pin.lng]}>
             {/* Popup or additional information can be added here if necessary */}
@@ -177,7 +179,7 @@ const AddPin = ({ pins, setPins }) => {
                   {pin.city}, {pin.country}
                 </p>
                 <p>
-                  {pin.startDate} - {pin.endDate}
+                  {dateStart} - {dateEnd}
                 </p>
                 <p>Notes: {pin.notes} </p>
               </div>
