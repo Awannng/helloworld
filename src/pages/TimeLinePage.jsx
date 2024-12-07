@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import MapTimeline from "../components/MapTimeline";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
-import { useUser } from "@clerk/clerk-react";
 
 const TimeLinePage = ({ menu, setMenu, signOut }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,39 +9,6 @@ const TimeLinePage = ({ menu, setMenu, signOut }) => {
   const toggleTimeline = () => {
     setIsOpen((prevState) => !prevState);
   };
-
-  // const [events, setEvents] = useState([]);
-
-  // const { user } = useUser(); // get the user's username from clerk
-  // const [user1, setUser1] = useState([]); //to get userId for fetchPin and POST pins (in URL)
-  // //fetch the user's data based on the username, pass user as param
-  // useEffect(() => {
-  //   const fetchUser = async (user) => {
-  //     try {
-  //       const response = await fetch(`http://localhost:3000/user/${user.id}`);
-  //       const data = await response.json();
-  //       setUser1(data);
-  //     } catch (error) {
-  //       console.error("Error fetching users's info:", error);
-  //     }
-  //   };
-  //   fetchUser(user);
-  // }, []);
-  // const userId = user1.userId;
-
-  // useEffect(() => {
-  //   const fetchEvents = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:3000/pins/${userId}`);
-  //       const data = await response.json();
-  //       setEvents(data);
-  //       console.log(data)
-  //     } catch (error) {
-  //       console.error("Error fetching pins:", error);
-  //     }
-  //   };
-  //   fetchEvents();
-  // }, []);
 
   return (
     <div className="min-h-full">
