@@ -281,12 +281,14 @@ const LandingPage = () => {
               <div className="bg-white p-3 rounded-md mb-5">
                 <h1 className="text-3xl mb-2">Shika Lu</h1>
                 <div className="md:grid grid-cols-2 text-1xl place-items-center">
-                  <img src="" alt="" className=" h-60 w-60 rounded-full mb-3" />
+                    
+                  <img src="../images/SL.jpg" alt="Shika Lu" className=" h-60 w-60 rounded-full mb-3" />
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque vitae rem perspiciatis voluptatum fuga! Porro nesciunt
-                    eligendi, iste minus aperiam nemo, similique veniam
-                    laboriosam, doloremque inventore eaque earum officiis. In.
+                  I am a senior majoring in Computer Science at Queens College. I have a strong interest 
+                  in software development and have explored areas such as web development, machine learning, and cloud computing.
+                  Through my academic projects, I have built scalable applications using modern technologies like React, Node.js, and PostgreSQL. 
+                  One of my recent projects involved creating a housing management system that taught me the importance of clean code and effective collaboration.
+                  I am eager to continue growing as a developer, learning new tools, and working with talented teams to solve real-world challenges.
                   </p>
                 </div>
               </div>
