@@ -21,7 +21,7 @@ const AddPin = ({ pins, setPins }) => {
     };
     fetchUser(user);
   }, []);
-  const userId = user1.userId;
+  const userId = user1.userId; //userId(not authId)
 
   //display the saved pins
   const [showPins, setShowPins] = useState([]);
@@ -173,8 +173,12 @@ const AddPin = ({ pins, setPins }) => {
                 >
                   <RiDeleteBinLine className="size-4" />
                 </button>
-                <p>Country: {pin.country}</p>
-                <p>City: {pin.city}</p>
+                <p>
+                  {pin.city}, {pin.country}
+                </p>
+                <p>
+                  {pin.startDate} - {pin.endDate}
+                </p>
                 <p>Notes: {pin.notes} </p>
               </div>
             </Popup>

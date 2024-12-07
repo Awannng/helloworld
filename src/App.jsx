@@ -8,7 +8,6 @@ import CreateAccountPage from "./pages/CreateAccountPage";
 import ProfilePage from "./pages/ProfilePage";
 import TimeLinePage from "./pages/TimeLinePage";
 
-
 function App() {
   const { signOut } = useClerk(); // Get the Clerk sign-out method
   const { isSignedIn } = useUser(); // Use Clerk to check if the user is signed in
@@ -20,7 +19,9 @@ function App() {
     try {
       await signOut();
       console.log("User has been logged out.");
-      navigate("/", { state: { message: "You have successfully logged out." } }); // Navigate with a message
+      navigate("/", {
+        state: { message: "You have successfully logged out." },
+      }); // Navigate with a message
     } catch (error) {
       console.error("Error during sign out:", error);
       alert("An error occurred during sign out. Please try again.");
@@ -36,6 +37,8 @@ function App() {
     }
   }, [isSignedIn, navigate]);
 
+  
+
   return (
     <Routes>
       {/* Define all routes within the Routes component */}
@@ -49,7 +52,11 @@ function App() {
         path="/home"
         element={
           isSignedIn ? (
-            <HomePage menu={menu} setMenu={setMenu} signOut={handleSignOut} />
+            <HomePage
+              menu={menu}
+              setMenu={setMenu}
+              signOut={handleSignOut}
+            />
           ) : (
             <Navigate to="/" /> // Redirect to the landing page if not signed in
           )
@@ -65,7 +72,11 @@ function App() {
         path="/profile"
         element={
           isSignedIn ? (
-            <ProfilePage menu={menu} setMenu={setMenu} signOut={handleSignOut} />
+            <ProfilePage
+              menu={menu}
+              setMenu={setMenu}
+              signOut={handleSignOut}
+            />
           ) : (
             <Navigate to="/" /> // Redirect to the landing page if not signed in
           )
@@ -76,7 +87,11 @@ function App() {
         path="/timeline"
         element={
           isSignedIn ? (
-            <TimeLinePage />
+            <TimeLinePage
+              menu={menu}
+              setMenu={setMenu}
+              signOut={handleSignOut}
+            />
           ) : (
             <Navigate to="/" /> // Redirect to the landing page if not signed in
           )
