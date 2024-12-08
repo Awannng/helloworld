@@ -1,5 +1,3 @@
-// src/components/MapComponent.jsx
-
 // Import React library for creating the React component
 import React, { useState } from "react";
 

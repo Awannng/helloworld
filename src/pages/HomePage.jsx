@@ -3,7 +3,7 @@ import React from "react";
 // Import the custom MapComponent to be used on this page
 import MapComponent from "../components/MapComponent";
 import Logo from "../components/Logo";
-import { Link } from "react-router-dom";
+import DropdownMenu from "../components/DropdownMenu";
 
 const HomePage = ({ menu, setMenu, signOut }) => {
   return (
@@ -20,35 +20,7 @@ const HomePage = ({ menu, setMenu, signOut }) => {
         </button>
 
         {/* When click the on the logo, it shows a dropdown menu */}
-        {menu && (
-          <div className="absolute top-5 left-5 translate-y-1/2">
-            <div className="bg-white h-auto shadow-md rounded-md text-sm flex flex-col p-1 ">
-              <button
-                // When click on the button, it goes to the profile page
-                className="hover:bg-slate-100 rounded-md p-2"
-              >
-                <Link to="/profile">Profile</Link>
-              </button>
-
-              <button
-                //When click, it will goes back to the timeline page
-                className="hover:bg-slate-100 rounded-md p-2"
-                type="button"
-              >
-                <Link to="/timeline">Timeline</Link>
-              </button>
-
-              <button
-                //When click, it will goes back to the landing page
-                onClick={signOut}
-                className="hover:bg-slate-100 rounded-md p-2"
-                type="button"
-              >
-                Log Out
-              </button>
-            </div>
-          </div>
-        )}
+        {menu && <DropdownMenu signOut={signOut} />}
       </div>
 
       <div className="-z-10">

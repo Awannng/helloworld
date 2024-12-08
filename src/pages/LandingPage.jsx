@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
-import { Link } from "react-router-dom";
 //import of the icons
 import { FaReact } from "react-icons/fa";
 import { SiExpress } from "react-icons/si";
@@ -119,6 +118,11 @@ const LandingPage = () => {
                   </a>
                 </li>
                 <li>
+                  <a className="underline-animation block" href="#demo">
+                    Demo
+                  </a>
+                </li>
+                <li>
                   <a className="underline-animation block" href="#feature">
                     Features
                   </a>
@@ -181,6 +185,18 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Demo */}
+          <div id="demo" className="white-space mb-20">
+            <h1 className="text-4xl mb-4">Demo</h1>
+            <video
+              src="/video/demo .mp4"
+              width="100%"
+              height="100%"
+              controls
+              onError={(e) => console.error("Error loading video:", e)}
+            ></video>
           </div>
 
           {/* Feature Section */}
@@ -281,14 +297,23 @@ const LandingPage = () => {
               <div className="bg-white p-3 rounded-md mb-5">
                 <h1 className="text-3xl mb-2">Shika Lu</h1>
                 <div className="md:grid grid-cols-2 text-1xl place-items-center">
-                    
-                  <img src="../images/SL.jpg" alt="Shika Lu" className=" h-60 w-60 rounded-full mb-3" />
+                  <img
+                    src="../images/SL.jpg"
+                    alt="Shika Lu"
+                    className=" h-60 w-60 rounded-full mb-3"
+                  />
                   <p>
-                  I am a senior majoring in Computer Science at Queens College. I have a strong interest 
-                  in software development and have explored areas such as web development, machine learning, and cloud computing.
-                  Through my academic projects, I have built scalable applications using modern technologies like React, Node.js, and PostgreSQL. 
-                  One of my recent projects involved creating a housing management system that taught me the importance of clean code and effective collaboration.
-                  I am eager to continue growing as a developer, learning new tools, and working with talented teams to solve real-world challenges.
+                    I am a senior majoring in Computer Science at Queens
+                    College. I have a strong interest in software development
+                    and have explored areas such as web development, machine
+                    learning, and cloud computing. Through my academic projects,
+                    I have built scalable applications using modern technologies
+                    like React, Node.js, and PostgreSQL. One of my recent
+                    projects involved creating a housing management system that
+                    taught me the importance of clean code and effective
+                    collaboration. I am eager to continue growing as a
+                    developer, learning new tools, and working with talented
+                    teams to solve real-world challenges.
                   </p>
                 </div>
               </div>
