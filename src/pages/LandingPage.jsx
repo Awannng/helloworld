@@ -159,13 +159,14 @@ const LandingPage = () => {
               alt="a map with pins"
             />
 
-            <div className="absolute left-6 bottom-3 md:bottom-28 text-black p-2 rounded-md w-10/12 bg-white bg-opacity-85">
+            <div className="absolute left-6 bottom-3 md:bottom-28 p-2 w-10/12">
               <div>
-                <h1 className="mb-3 text-2xl md:text-6xl">
+                <h1 className="text-3xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)]">
+
                   Hello World Travels with You!
                 </h1>
                 <div className="flex justify-between">
-                  <p className="text-sm md:text-2xl w-9/12">
+                  <p className="text-sm md:text-2xl w-9/12 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)]">
                     Welcome to HelloWorld, the digital travel companion designed
                     to capture and relive your adventures in a user-friendly
                     platform. HelloWorld lets you visualize your travels on an
@@ -327,7 +328,6 @@ const LandingPage = () => {
         </div>
       </div>
     </>
-  );
+  );  
 };
-
-export default LandingPage;
+  export default LandingPage;
