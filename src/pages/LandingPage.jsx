@@ -175,13 +175,7 @@ const LandingPage = () => {
                   </p>
 
                   <div className="place-content-end">
-                    {/* SignUp button that can jumps to Clerk */}
-                    <button
-                      className="bg-orange-500 p-1 md:p-2 text-xl md:text-2xl text-white rounded-md hover:bg-orange-700 block mb-2 mt-2"
-                      onClick={handleSignUp}
-                    >
-                      Sign In
-                    </button>
+                  
                   </div>
                 </div>
               </div>
