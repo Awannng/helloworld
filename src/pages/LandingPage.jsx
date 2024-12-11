@@ -1,79 +1,85 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
-//import of the icons
 import { FaReact } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
+import { SiExpress, SiPrisma, SiClerk } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
-import { SiPrisma } from "react-icons/si";
-import { RiSupabaseLine } from "react-icons/ri";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiClerk } from "react-icons/si";
-
+import { RiSupabaseLine, RiTailwindCssFill } from "react-icons/ri";
 import { useClerk, useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const [showNav, setShowNav] = useState(false);
-  const { openSignIn } = useClerk(); // Clerk's sign-in modal method
-  const { user, isSignedIn } = useUser(); // Check if the user is signed in and get user information
-  const navigate = useNavigate(); // Used for navigation
+  const [loading, setLoading] = useState(false);
+  const { openSignIn, client, setActive } = useClerk();
+  const { user, isSignedIn } = useUser();
+  const navigate = useNavigate();
 
   const generateUniqueUsername = () => {
     return `user_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
   };
 
-  // Define a function to sync user information to the backend
   const syncUserToBackend = async () => {
-    if (isSignedIn) {
-      // Construct user data
-      const userData = {
-        authId: user.id,
-        email: user.primaryEmailAddress?.emailAddress || null,
-        username: user.username || generateUniqueUsername(),
-      };
+    if (!isSignedIn) return;
 
-      try {
-        // Send user data to the backend
-        const response = await fetch("http://localhost:3000/save-user", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        });
+    setLoading(true);
+    const userData = {
+      authId: user.id,
+      email: user.primaryEmailAddress?.emailAddress || null,
+      username: user.username || generateUniqueUsername(),
+    };
 
-        if (response.ok) {
-          console.log("User data synced successfully to the backend.");
-        } else {
-          console.error(
-            "Failed to sync user data to the backend:",
-            response.status
-          );
-        }
-      } catch (error) {
-        console.error("Error syncing user data:", error);
+    try {
+      const response = await fetch("http://localhost:3000/save-user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        console.log("User data synced successfully to the backend.");
+      } else {
+        console.error("Failed to sync user data to the backend:", response.status);
       }
+    } catch (error) {
+      console.error("Error syncing user data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSignUp = () => {
     if (isSignedIn) {
-      // If the user is already signed in, redirect to the Home Page
       console.log("User is already signed in. Redirecting to /home...");
       navigate("/home");
     } else {
-      // If the user is not signed in, open the Clerk sign-in modal
       console.log("User is not signed in. Opening Sign In modal...");
-      openSignIn(); // Open the sign-in modal
+      openSignIn();
     }
   };
 
-  // Listen for changes in sign-in status and sync data to the backend after the user signs in
+  const switchToActiveSession = async () => {
+    if (client?.sessions?.length) {
+      const activeSession = client.sessions[0];
+      await setActive({ session: activeSession.id });
+      console.log(`Switched to active session: ${activeSession.id}`);
+    }
+  };
+
   useEffect(() => {
-    syncUserToBackend();
+    const syncData = async () => {
+      await syncUserToBackend();
+    };
+    syncData();
   }, [isSignedIn, user]);
 
-  return (
+  useEffect(() => {
+    if (client?.sessions?.length) {
+      switchToActiveSession();
+    }
+  }, [client?.sessions]);
+
+
+return (
     <>
       <div className="min-h-full">
         {/* The Nav bar at the top of the page */}
