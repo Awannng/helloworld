@@ -4,30 +4,45 @@ import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 
 const CurrentPosition = ({ currentPosition, setCurrentPosition }) => {
-  //allows to access the map instance directly
+  // Access the Leaflet map instance
   const map = useMap();
 
   useEffect(() => {
-    //locates the current position
-    map.locate().on("locationfound", (e) => {
-      //set the current position based on e
-      setCurrentPosition(e.latlng);
-      //shifts the map to where the pin is
-      map.flyTo(e.latlng, map.getZoom());
-    });
-  }, [map]);
+    // Locate the current position
+    const locate = () => {
+      map.locate({
+        setView: true, // Automatically center the map on the user's location
+        maxZoom: 16, // Set maximum zoom level
+        enableHighAccuracy: false, // Request high accuracy location
+        timeout: 10000, // Maximum wait time for location
+      })
+        .on("locationfound", (e) => {
+          console.log("Location found:", e.latlng);
+          setCurrentPosition(e.latlng); // Update state with the user's position
+          map.flyTo(e.latlng, map.getZoom()); // Center map on user's location
+        })
+        .on("locationerror", (e) => {
+          console.error("Location error:", e.message);
+          alert(
+            "Unable to access your location. Please ensure location services are enabled and reload the page."
+          );
+        });
+    };
 
-  //customized a different pin for currentLocation
+    // Trigger location request on component mount
+    locate();
+  }, [map, setCurrentPosition]);
+
+  // Custom icon for the current location
   const currentLocPin = new Icon({
     iconUrl: "/images/currentLoc.png",
-    iconSize: [60, 60], // size of the icon
-    iconAnchor: [25, 50], // Position of the icon's anchor point (relative to the icon)
-    popupAnchor: [6, -30], // Position of the popup anchor
+    iconSize: [60, 60], // Icon size
+    iconAnchor: [30, 60], // Icon anchor position
+    popupAnchor: [0, -40], // Popup position relative to icon
   });
 
   return (
     <>
-      {/* place a marker on the map if currentPosition is available and a popup when clicked on the marker */}
       {currentPosition ? (
         <Marker position={currentPosition} icon={currentLocPin}>
           <Popup>You are here</Popup>
